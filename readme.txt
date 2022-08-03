@@ -4,11 +4,11 @@ Contributors: zealopensource
 Donate Link: http://www.zealousweb.net/payment/
 Tags: user registration, user login, forgot password, reset password, WordPress, contact form 7, CF7 User Registration, user Registration cf7, user login cf7
 Requires at least: 3.5
-Tested up to:  5.8.2
-Stable tag: 4.3
+Tested up to:  6.0.x
+Stable tag: 1.2
 Requires PHP: 5.6
 License: GPLv3 or later License
-Version: 1.1
+Version: 1.2
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 == Description ==
@@ -76,8 +76,12 @@ Installing the plugin is easy. Just follow these steps:
 
 == Changelog ==
 
+= 1.2 =
+* Tested - Checked with Latest CF7 5.6 version and WordPress.
+
 = 1.1 =
 * Fix - The quick-edit/edit/trash function do not show above the custom post type in admin screen.
+
 = 1.0 =
 * Initial Release
 
