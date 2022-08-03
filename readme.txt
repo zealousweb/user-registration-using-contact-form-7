@@ -4,7 +4,7 @@ Contributors: zealopensource
 Donate Link: http://www.zealousweb.net/payment/
 Tags: user registration, user login, forgot password, reset password, WordPress, contact form 7, CF7 User Registration, user Registration cf7, user login cf7
 Requires at least: 3.5
-Tested up to:  6.0.x
+Tested up to:  6.0.1
 Stable tag: 1.2
 Requires PHP: 5.6
 License: GPLv3 or later License
