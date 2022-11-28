@@ -4,7 +4,7 @@ Contributors: zealopensource
 Donate Link: http://www.zealousweb.net/payment/
 Tags: user registration, user login, forgot password, reset password, WordPress, contact form 7, CF7 User Registration, user Registration cf7, user login cf7
 Requires at least: 3.5
-Tested up to:  6.0.1
+Tested up to:  6.1.1
 Stable tag: 1.2
 Requires PHP: 5.6
 License: GPLv3 or later License
@@ -37,7 +37,19 @@ User Registration Using Contact Form 7 plugin provides the feature to register t
 * Option to add a password field to the Contact Form 7 plugin.
 
 <strong>[Documentation](https://www.zealousweb.com/documentation/wordpress-plugins/userregistrationusingcontactform7pro/)</strong>
-<strong>[Get more information of Pro version here](https://www.zealousweb.com/wordpress-plugins/user-registration-using-contact-form-7-pro/)</strong>
+<strong>[Get more information of Pro version here](https://www.zealousweb.com/store/user-registration-using-contact-form-7-pro)</strong>
+
+== OUR OTHER PLUGINS ==
+
+* <strong>[Accept PayPal Payments Using Contact Form 7 Pro](https://www.zealousweb.com/store/accept-paypal-payments-using-contact-form-7-pro)</strong>
+* <strong>[Accept Stripe Payments Using Contact Form 7 Pro](https://www.zealousweb.com/store/accept-stripe-payments-using-contact-form-7-pro)</strong>
+* <strong>[Accept Authorize.NET Payments Using Contact Form 7 Pro](https://www.zealousweb.com/store/accept-authorize-net-payments-using-contact-form-7-pro)</strong>
+* <strong>[Accept Elavon Payments Using Contact Form 7 Pro](https://www.zealousweb.com/store/accept-elavon-payments-using-contact-form-7-pro)</strong>
+* <strong>[Accept 2Checkout Payments Using Contact Form 7 Pro](https://www.zealousweb.com/store/accept-2checkout-payments-using-contact-form-7-pro)</strong>
+* <strong>[Accept SagePay(opayo) Payments Using Contact Form 7 Pro](https://www.zealousweb.com/store/accept-sage-pay-payments-using-contact-form-7-pro)</strong>
+* <strong>[User Registration Using Contact Form 7 Pro](https://www.zealousweb.com/store/user-registration-using-contact-form-7-pro)</strong>
+* <strong>[Abandoned Contact Form 7 Pro](https://www.zealousweb.com/store/abandoned-contact-form-7-pro/)</strong>
+* <strong>[Custom Product Options WooCommerce Pro](https://www.zealousweb.com/store/custom-product-options-woocommerce-pro)</strong>
 
 = Shortcodes =
 You can use the below shortcode for Forgot Password:
