@@ -60,6 +60,15 @@
         <input type="checkbox" name="zurcf7_skipcf7_email" id="zurcf7_skipcf7_email" value="1" <?php echo checked( $zurcf7_skipcf7_email, 1, false );?>>
       </td>
     </tr>
+    <tr>
+      <th scope="row">
+        <label for="zurcf7_enable_sent_login_url"><?php echo __( 'Enable sent Login URL in Mail.', 'zeal-user-reg-cf7' ); ?></label>
+        <span class="zwt-zurcf7-tooltip" id="zurcf7_enable_sent_login_url"></span>
+      </th>
+      <td>
+        <input type="checkbox" name="zurcf7_enable_sent_login_url" id="zurcf7_enable_sent_login_url" value="1" <?php echo checked( $zurcf7_enable_sent_login_url, 1, false );?>>
+      </td>
+    </tr>
 
     
 

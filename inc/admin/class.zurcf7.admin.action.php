@@ -25,7 +25,9 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 			add_action( 'add_meta_boxes', 	array( $this, 'action__add_meta_boxes' ) );
 
 			add_action( 'manage_'.ZURCF7_POST_TYPE.'_posts_custom_column',  array( $this, 'action__manage_zurcf7_data_posts_custom_column' ), 10, 2 );
-
+			
+			add_action( 'show_user_profile',array( $this, 'action___user_zurcf7_data_profile_fields' ));
+			add_action( 'show_user_profile',array( $this, 'action___user_zurcf7_data_profile_fields' ));
 		}
 
 		/*
@@ -64,6 +66,8 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 								'<p>Select the Form for User Registration.</p>', 'zeal-user-reg-cf7' ),
 					'zurcf7_skipcf7_email_msg' => __( '<h3>Skip Contact Form 7 Email</h3>' .
 								'<p>Tick the checkbox to skip default contact form 7 email.</p>', 'zeal-user-reg-cf7' ),
+					'zurcf7_enable_sent_login_url' => __( '<h3>Enable sent Login URL in Mail</h3>' .
+								'<p>Enable sent Login URL in Mail.</p>', 'zeal-user-reg-cf7' ),
 					'zurcf7_debug_mode_status_msg' => __( '<h3>Enable Debug Mode</h3>' .
 								'<p>Tick the checkbox to enable debug mode for generating logs.</p>', 'zeal-user-reg-cf7' ),
 					'zurcf7_email_field_msg' => __( '<h3>Select Email Field</h3>' .
@@ -74,6 +78,13 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 								'<p>Select the User Role for user registration.</p>', 'zeal-user-reg-cf7' ),
 					'zurcf7_successurl_field_msg' => __( '<h3>Select Success URL</h3>' .
 								'<p>Select the page for user redirection after the registration process is complete.</p>', 'zeal-user-reg-cf7' ),
+					'zurcf7_acf_field_mapping' => __( '<h3>ACF Plugin Required</h3>' .
+								'<p>ACF Plugin is required for ACF Field Mapping</p>', 'zeal-user-reg-cf7' ),
+					'zurcf7_fb_signup_app_id_tool' => __( '<h3>App Id</h3>' .
+								'<p>Please enter app id.</p>', 'zeal-user-reg-cf7' ),
+					'zurcf7_fb_app_secret_tool' => __( '<h3>App Secret</h3>' .
+								'<p>Please enter app secret.</p>', 'zeal-user-reg-cf7' ),
+					
 				);
 
 				
@@ -105,7 +116,8 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 			$user_login = get_post_meta( $post->ID, ZURCF7_META_PREFIX.'user_login',true);
 			$user_email = get_post_meta( $post->ID, ZURCF7_META_PREFIX.'user_email',true);
 			$user_role = get_post_meta( $post->ID, ZURCF7_META_PREFIX.'role',true);
-			
+			$social_type = get_post_meta( $post->ID, ZURCF7_META_PREFIX.'type',true);
+
 			echo "<style>.post-type-zuserreg_data #zurcf7-data .handle-order-higher,
 			.post-type-zuserreg_data #zurcf7-data .handle-order-lower {
 				display: none;
@@ -133,15 +145,41 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 				'</th>' .
 				'<td>'.$user_login.'</td>' .
 			'</tr>';
-
-			
-
 			echo '<tr class="form-field">' .
 				'<th scope="row">' .
 					'<label for="hcf_author">' . __( 'User Role', 'zeal-user-reg-cf7' ) . '</label>' .
 				'</th>' .
 				'<td>'.ucfirst($user_role).'</td>' .
 			'</tr>';
+			if( !empty( $social_type ) ) {
+				echo '<tr class="form-field">' .
+					'<th scope="row">' .
+						'<label for="hcf_author">' . __( 'Type', 'zeal-user-reg-cf7' ) . '</label>' .
+					'</th>' .
+					'<td>'.$social_type.'</td>' .
+				'</tr>';
+			}
+
+			if ( is_plugin_active( 'advanced-custom-fields/acf.php' ) || is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
+				$returnfieldarr_user = zurcf7_ACF_filter_array_function();
+				if(!empty($returnfieldarr_user)){
+					foreach ($returnfieldarr_user['response'] as $value) { 
+						$field_name = $value['field_name'];
+						$acf_field_value = get_post_meta( $post->ID, $field_name, true );
+				
+						// Check if $acf_field_value is not empty before displaying the table row
+						if (!empty($acf_field_value)) {
+							echo '<tr class="form-field">' .
+								'<th scope="row">' .
+									'<label for="hcf_author">' .$field_name. '</label>' .
+								'</th>' .
+								'<td>'.$acf_field_value.'</td>' .
+							'</tr>';
+						}
+					}
+				}
+			}
+			
 
 			echo '</table>';
 		}
@@ -173,6 +211,27 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 			}
 		}
 
+		/**
+		 * Action: action___user_zurcf7_data_profile_fields
+		 *
+		 *
+		 * @method show extra field
+		 *
+		 */
+		function action___user_zurcf7_data_profile_fields( $user ) { 
+			$social_type = '';
+			$social_type = get_user_meta($user->ID,ZURCF7_META_PREFIX.'type',true);
+			if(!empty($social_type)) { ?>
+				<table class="form-table">
+					<tr>
+						<th><label for="type"><?php _e("Type"); ?></label></th>
+						<td>
+							<span class="description"><?php echo $social_type; ?></span>
+						</td>
+					</tr>
+				</table>
+		<?php }
+		}
 
 		/*
 		######## ##     ## ##    ##  ######  ######## ####  #######  ##    ##  ######

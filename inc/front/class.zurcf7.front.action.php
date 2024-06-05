@@ -159,14 +159,17 @@ if ( !class_exists( 'ZURCF7_Front_Action' ) ){
 							}else{
 
 								$zurcf7_successurl_field = get_option( 'zurcf7_successurl_field');
-								$login_url = !empty($zurcf7_successurl_field) ? get_the_permalink($zurcf7_successurl_field) : wp_login_url();
-								// Email login details to user
-								$blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
-								$message = "Welcome! Your login details are as follows:" . "\r\n";
-								$message .= sprintf(__('Username: %s'), $user_email) . "\r\n";
-								$message .= sprintf(__('Password: %s'), $user_pwd) . "\r\n";
-								$message .= $login_url . "\r\n";
-								wp_mail($user_email, sprintf(__('[%s] Your username and password'), $blogname), $message);
+								$zurcf7_enable_sent_login_url = get_option( 'zurcf7_enable_sent_login_url');
+								if(!empty($zurcf7_enable_sent_login_url)) {
+									$login_url = !empty($zurcf7_successurl_field) ? get_the_permalink($zurcf7_successurl_field) : wp_login_url();
+									// Email login details to user
+									$blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
+									$message = "Welcome! Your login details are as follows:" . "\r\n";
+									$message .= sprintf(__('Username: %s'), $user_email) . "\r\n";
+									$message .= sprintf(__('Password: %s'), $user_pwd) . "\r\n";
+									$message .= $login_url . "\r\n";
+									wp_mail($user_email, sprintf(__('[%s] Your username and password'), $blogname), $message);
+								}
 
 
 								//create post from email id
@@ -179,7 +182,11 @@ if ( !class_exists( 'ZURCF7_Front_Action' ) ){
 								add_post_meta( $zur_post_id, ZURCF7_META_PREFIX.'user_email', wp_slash($user_email), true);
 								add_post_meta( $zur_post_id, ZURCF7_META_PREFIX.'role', $zurcf7_userrole_field, true);
 								add_post_meta( $zur_post_id, ZURCF7_META_PREFIX.'user_status', 1, true);
-
+								
+								//ACF field add_post_meta
+								if ( is_plugin_active( 'advanced-custom-fields/acf.php' ) || is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
+									$this->zurcf7_acf_save_user_meta($user_id,$zur_post_id,$form_id,$data);
+								}
 								$_SESSION[ ZURCF7_META_PREFIX . 'user_registered' . $form_id ] = "User registered successfully.";
 								$this->zurcf7_custom_logs("User created successfully. Email ID:".$user_email);
 							}
@@ -300,6 +307,29 @@ if ( !class_exists( 'ZURCF7_Front_Action' ) ){
 				$log_file_data = $log_filename.'/zurcf7-log-' . date('d-M-Y') . '.log';
 
 				file_put_contents($log_file_data, $message . "\n", FILE_APPEND);
+			}
+		}
+
+		/**
+		 * ACF Field Mapping Save Data
+		 * @param  [type] $bool [Boolean]
+		 * @return [type] $bool [Boolean]
+		 */
+		function zurcf7_acf_save_user_meta($user_id, $post_id,$form_id, $formdata) {
+			if ( is_plugin_active( 'advanced-custom-fields/acf.php' ) || is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
+				$returnfieldarr_user = zurcf7_ACF_filter_array_function();
+				if(!empty($returnfieldarr_user)){
+					foreach ($returnfieldarr_user['response'] as $value) { 
+						$field_name = $value['field_name'];
+						$acf_field_name = (get_option($field_name)) ? get_option($field_name) : get_option($field_name,"");
+						foreach ($formdata as $key => $form_values) {
+							if($key === $acf_field_name){
+								update_user_meta( $user_id, $field_name, $form_values);
+								update_post_meta( $post_id, $field_name,$form_values);
+							}
+						}			
+					}
+				}
 			}
 		}
 	}

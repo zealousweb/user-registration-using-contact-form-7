@@ -17,6 +17,8 @@
                 if (r.response == 'success') {
                     if (r.is_exists == 'no')
                         $('.zurcf7_alltag').html(r.formtag);
+                        $('#zurcf7_fb_signup_app_id').val('');
+                        $('#zurcf7_fb_app_secret').val('');
                     if (r.is_exists == 'yes') {
 
                         $('.zurcf7_alltag').html(r.formtag);
@@ -24,9 +26,27 @@
                         $("#zurcf7_email_field option[value='" + r.zurcf7_email_field + "']").attr("selected", "selected");
                         $("#zurcf7_username_field option[value='" + r.zurcf7_username_field + "']").attr("selected", "selected");
                         $("#zurcf7_userrole_field option[value='" + r.zurcf7_userrole_field + "']").attr("selected", "selected");
+                        
+                        /*Start ACF Field */
+                        var zurcf7_ACF_field = r.zurcf7_ACF_field;
+                        if(zurcf7_ACF_field){
+                            var zurcf7_ACF_field_string = zurcf7_ACF_field.toString();
+                            $.each(zurcf7_ACF_field_string.split(','), function(key, value) {
+                                $("#zurcf7_ACF_field_"+key).val(value); 
+                            });
+                        }
+                        $("#zurcf7_ACF_field option[value='" + r.zurcf7_ACF_field + "']").attr("selected", "selected");
+                        /*End ACF Field */
+                        
+                        /*Start FB Field */
+                        $('#zurcf7_fb_signup_app_id').val(r.zurcf7_fb_signup_app_id);
+                        $('#zurcf7_fb_app_secret').val(r.zurcf7_fb_app_secret);
+                        /*End FB Field */
                     }
                 } else {
                     $('.zurcf7_alltag').html(r.formtag)
+                    $('#zurcf7_fb_signup_app_id').val('');
+                    $('#zurcf7_fb_app_secret').val('');
                 }
             }
         });
@@ -47,6 +67,14 @@
         $('#zurcf7_skipcf7_email_msg').pointer({
             pointerClass: 'wp-pointer zurcf7-pointer',
             content: cf7forms_data.zurcf7_skipcf7_email_msg,
+            position: 'left center',
+        }).pointer('open');
+    });
+    $('#zurcf7_enable_sent_login_url').on('mouseenter click', function() {
+        $('body .wp-pointer-buttons .close').trigger('click');
+        $('#zurcf7_enable_sent_login_url').pointer({
+            pointerClass: 'wp-pointer zurcf7-pointer',
+            content: cf7forms_data.zurcf7_enable_sent_login_url,
             position: 'left center',
         }).pointer('open');
     });
@@ -96,6 +124,30 @@
         $('#zurcf7_successurl_field_msg').pointer({
             pointerClass: 'wp-pointer zurcf7-pointer',
             content: cf7forms_data.zurcf7_successurl_field_msg,
+            position: 'left center',
+        }).pointer('open');
+    });
+    $('#zurcf7_acf_field_mapping').on('mouseenter click', function() {
+        $('body .wp-pointer-buttons .close').trigger('click');
+        $('#zurcf7_acf_field_mapping').pointer({
+            pointerClass: 'wp-pointer zurcf7-pointer',
+            content: cf7forms_data.zurcf7_acf_field_mapping,
+            position: 'left center',
+        }).pointer('open');
+    });
+    $('#zurcf7_fb_signup_app_id_tool').on('mouseenter click', function() {
+        $('body .wp-pointer-buttons .close').trigger('click');
+        $('#zurcf7_fb_signup_app_id_tool').pointer({
+            pointerClass: 'wp-pointer zurcf7-pointer',
+            content: cf7forms_data.zurcf7_fb_signup_app_id_tool,
+            position: 'left center',
+        }).pointer('open');
+    });
+    $('#zurcf7_fb_app_secret_tool').on('mouseenter click', function() {
+        $('body .wp-pointer-buttons .close').trigger('click');
+        $('#zurcf7_fb_app_secret_tool').pointer({
+            pointerClass: 'wp-pointer zurcf7-pointer',
+            content: cf7forms_data.zurcf7_fb_app_secret_tool,
             position: 'left center',
         }).pointer('open');
     });

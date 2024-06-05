@@ -33,6 +33,13 @@ wp_enqueue_style( 'wp-pointer' );
     <?php 
 		//Form settings file
 		require_once( ZURCF7_DIR .  '/inc/admin/template/' . ZURCF7_PREFIX . '.form.settings.php' );
+
+    //ACF Field Mapping
+    require_once( ZURCF7_DIR .  '/inc/admin/template/' . ZURCF7_PREFIX . '.fieldmapping.settings.php' );
+
+    //social Fb registration
+    require_once( ZURCF7_DIR .  '/inc/admin/template/' . ZURCF7_PREFIX . '.fb.settings.php' ); 
+
     ?>
 
 

@@ -199,6 +199,32 @@ if ( !class_exists( 'ZURCF7' ) ) {
 					$zurcf7_username_field = (get_option( 'zurcf7_username_field')) ? get_option( 'zurcf7_username_field') : "";
 					$zurcf7_userrole_field = (get_option( 'zurcf7_userrole_field')) ? get_option( 'zurcf7_userrole_field') : "";
 
+					//Start Save ACF Fields
+					if ( is_plugin_active( 'advanced-custom-fields/acf.php' ) || is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
+						$returnfieldarr = zurcf7_ACF_filter_array_function();
+						if(!empty($returnfieldarr)){
+							$count = 0;
+							$zurcf7_acf_field = array();
+							foreach ($returnfieldarr['response'] as $value) { 
+								$field_name = $value['field_name'];
+								if($count != 3) {
+									// Perform blank check before updating option
+									if (!empty($field_name)) {
+										//$zurcf7_acf_field[] = get_option($field_name);
+										$zurcf7_ACF_field[] = (get_option($field_name)) ? get_option($field_name) : "";
+									}
+								}
+							$count++;
+							}
+						}
+					}
+					//End Save ACF Fields
+					$zurcf7_fb_signup_app_id = (get_option( 'zurcf7_fb_signup_app_id')) ? get_option( 'zurcf7_fb_signup_app_id') : "";
+					$zurcf7_fb_app_secret = (get_option( 'zurcf7_fb_app_secret')) ? get_option( 'zurcf7_fb_app_secret') : "";
+					// Start FB Fields
+
+					// End FB Fields
+
 					$res = array(
 						'response' =>'success',
 						'is_exists' => 'yes',
@@ -206,6 +232,9 @@ if ( !class_exists( 'ZURCF7' ) ) {
 						'zurcf7_email_field' => $zurcf7_email_field,
 						'zurcf7_username_field' => $zurcf7_username_field,
 						'zurcf7_userrole_field' => $zurcf7_userrole_field,
+						'zurcf7_ACF_field' => $zurcf7_ACF_field,
+						'zurcf7_fb_signup_app_id' => $zurcf7_fb_signup_app_id,
+						'zurcf7_fb_app_secret' => $zurcf7_fb_app_secret,
 					);
 
 				}else{

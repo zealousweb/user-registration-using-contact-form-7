@@ -2,22 +2,26 @@
 
 Contributors: zealopensource
 Donate Link: http://www.zealousweb.net/payment/
-Tags: user registration, user login, forgot password, reset password, WordPress, contact form 7, CF7 User Registration, user Registration cf7, user login cf7
+Tags: user registration, user login, forgot password, contact form 7
 Requires at least: 3.5
-Tested up to:  6.0.1
-Stable tag: 1.2
+Tested up to:  6.5
+Stable tag: 2.0
 Requires PHP: 5.6
 License: GPLv3 or later License
-Version: 1.2
+Version: 2.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
+
+User Registration Using Contact Form 7 plugin provides the feature to register the user to the website.
 
 == Description ==
 
 User Registration Using Contact Form 7 plugin provides the feature to register the user to the website. By using this plugin, it becomes easy to create the registration or sign up form by selecting the fields for username and Email Id. The plugin allows the admins to view the list of registered users and set their roles efficiently.
 
 = Features of User Registration Using Contact Form 7 =
-
-* Users can register to the site using the Contact Form 7 plugin.
+* Advanced Custom Field Mapping: Create advanced custom fields for user profiles, with only text and textarea options, and map them to corresponding Contact Form 7 fields. This allows for a more personalized user experience.
+* Social Sign Up : Enable users to sign up in using popular social media platforms such as Facebook.
+* Option to include the login URL in the email.
+* Users can register to the site using the Contact Form 7 plugin. 
 * Option to view the list of the users who have been registered to the site.
 * Option to set the User Role for the registered users.
 * Option to select the Username and email field for the registration.
@@ -35,9 +39,17 @@ User Registration Using Contact Form 7 plugin provides the feature to register t
 * Admins can restrict users from login.
 * Auto login after user registration.
 * Option to add a password field to the Contact Form 7 plugin.
+* Social Sign Up + Login: Enable users to sign up and log in using popular social media platforms such as Google, Facebook, and Apple.
+* Push Notifications: Set up push notifications to be sent to registered users on your site, keeping them informed and engaged.
+* Compatibility with Multi-Step for Contact Form 7: Ensure seamless integration between Contact Form 7 and the Multi-Step extension, allowing you to create intuitive and user-friendly multi-step forms.
+* Email Templates for Contact Form 7: Customize email templates for Contact Form 7 or bypass the default email notifications entirely. This allows you to send personalized registration and login email notifications.
+* Multilingual Support: Provide support for multiple languages on your site, enabling users to view and interact with content in their preferred language.
+* Advanced Custom Field Mapping: Create advanced custom fields for user profiles, with only text and textarea options, and map them to corresponding Contact Form 7 fields. This allows for a more personalized user experience.
+* WooCommerce Field Mapping
+* Compatibility of WordPress VIP.
 
 <strong>[Documentation](https://www.zealousweb.com/documentation/wordpress-plugins/userregistrationusingcontactform7pro/)</strong>
-<strong>[Get more information of Pro version here](https://www.zealousweb.com/wordpress-plugins/user-registration-using-contact-form-7-pro/)</strong>
+<strong>[Get more information of Pro version here](https://store.zealousweb.com/wordpress-plugins/user-registration-using-contact-form-7-pro/)</strong>
 
 = Shortcodes =
 You can use the below shortcode for Forgot Password:
@@ -47,7 +59,7 @@ You can use the below shortcode for Reset Password:
 
 = Getting Help From Our Support System =
 
-Furthermore, if you need technical assistance to integrate ‘User Registration Using Contact Form 7’, you can reach out to us at https://zealousweb.com/support/, ZealousWeb Support System, and our support team will lend you the necessary assistance. As a leading company providing digital solutions, and the developers of this plugin, we ensure our clients have a seamless experience with ‘User Registration Using Contact Form 7’.
+Furthermore, if you need technical assistance to integrate ‘User Registration Using Contact Form 7’, you can reach out to us at [ZealousWeb Support](https://support.zealousweb.com/) System, and our support team will lend you the necessary assistance. As a leading company providing digital solutions, and the developers of this plugin, we ensure our clients have a seamless experience with ‘User Registration Using Contact Form 7’.
 
 We also offer custom WordPress extension development and WordPress theme design services to fulfill your e-commerce objectives.
 
@@ -75,6 +87,11 @@ Installing the plugin is easy. Just follow these steps:
 9. This is how the Password field will display in the front-end.
 
 == Changelog ==
+
+= 2.0 =
+* Advanced Custom Fields (ACF) mapped
+* Facebook Sign Up with a limited set of fields
+* Option to include the login URL in the email.
 
 = 1.2 =
 * Tested - Checked with Latest CF7 5.6 version and WordPress.
