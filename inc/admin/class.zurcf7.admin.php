@@ -223,7 +223,7 @@ if ( !class_exists( 'ZURCF7_Admin' ) ) {
 		function action__admin_notices_zurcf7_nonce_issue(){
 			echo '<div class="error">' .
 				sprintf(
-					__( '<p>Nonce issue.. Please try again.</p>', 'zeal-user-reg-cf7' ),
+					esc_html__( '<p>Nonce issue.. Please try again.</p>', 'zeal-user-reg-cf7' ),
 					'User Registration Using Contact Form 7'
 				) .
 			'</div>';

@@ -53,7 +53,7 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 			if(!in_array('administrator',$roles)){
 				remove_menu_page('edit.php?post_type='.ZURCF7_POST_TYPE); // Pages
 				if( isset($_GET['post_type']) && (ZURCF7_POST_TYPE ===  $_GET['post_type']) ){
-					wp_die("Access denied",ZURCF7_TEXT_DOMAIN);
+                    wp_die(esc_html__("Access denied", 'ZURCF7_TEXT_DOMAIN'));
 				}
 			}
 			if( isset($_GET['post_type']) && (ZURCF7_POST_TYPE ===  $_GET['post_type']) ){
@@ -127,36 +127,36 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 
 			echo '<tr class="form-field">' .
 				'<th scope="row">' .
-					'<label for="hcf_author">' . __( 'CF7 Form Name', 'zeal-user-reg-cf7' ) . '</label>' .
+					'<label for="hcf_author">' . esc_html__( 'CF7 Form Name', 'zeal-user-reg-cf7' ) . '</label>' .
 				'</th>' .
-				'<td>'.$form_title.'</td>' .
+				'<td>'.esc_html($form_title).'</td>' .
 			'</tr>';
 
 			echo '<tr class="form-field">' .
 				'<th scope="row">' .
-					'<label for="hcf_author">' . __( 'User Email', 'zeal-user-reg-cf7' ) . '</label>' .
+					'<label for="hcf_author">' . esc_html__( 'User Email', 'zeal-user-reg-cf7' ) . '</label>' .
 				'</th>' .
-				'<td>'.$user_email.'</td>' .
+				'<td>'.esc_html($user_email).'</td>' .
 			'</tr>';
 
 			echo '<tr class="form-field">' .
 				'<th scope="row">' .
-					'<label for="hcf_author">' . __( 'User Name', 'zeal-user-reg-cf7' ) . '</label>' .
+					'<label for="hcf_author">' . esc_html__( 'User Name', 'zeal-user-reg-cf7' ) . '</label>' .
 				'</th>' .
-				'<td>'.$user_login.'</td>' .
+				'<td>'.esc_html($user_login).'</td>' .
 			'</tr>';
 			echo '<tr class="form-field">' .
 				'<th scope="row">' .
-					'<label for="hcf_author">' . __( 'User Role', 'zeal-user-reg-cf7' ) . '</label>' .
+					'<label for="hcf_author">' . esc_html__( 'User Role', 'zeal-user-reg-cf7' ) . '</label>' .
 				'</th>' .
-				'<td>'.ucfirst($user_role).'</td>' .
+				'<td>'.esc_html(ucfirst($user_role)).'</td>' .
 			'</tr>';
 			if( !empty( $social_type ) ) {
 				echo '<tr class="form-field">' .
 					'<th scope="row">' .
-						'<label for="hcf_author">' . __( 'Type', 'zeal-user-reg-cf7' ) . '</label>' .
+						'<label for="hcf_author">' . esc_html__( 'Type', 'zeal-user-reg-cf7' ) . '</label>' .
 					'</th>' .
-					'<td>'.$social_type.'</td>' .
+					'<td>'.esc_html($social_type).'</td>' .
 				'</tr>';
 			}
 
@@ -171,9 +171,9 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 						if (!empty($acf_field_value)) {
 							echo '<tr class="form-field">' .
 								'<th scope="row">' .
-									'<label for="hcf_author">' .$field_name. '</label>' .
+									'<label for="hcf_author">' .esc_html($field_name). '</label>' .
 								'</th>' .
-								'<td>'.$acf_field_value.'</td>' .
+								'<td>'.esc_html($acf_field_value).'</td>' .
 							'</tr>';
 						}
 					}
@@ -200,12 +200,12 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 			switch ( $column ) {
 
 				case ZURCF7_META_PREFIX.'user_login' :
-					echo get_post_meta( $post_id , ZURCF7_META_PREFIX.'user_login', true );
+					echo esc_attr(get_post_meta( $post_id , ZURCF7_META_PREFIX.'user_login', true ));
 				break;
 
 				
 				case ZURCF7_META_PREFIX.'role' :
-					echo ( !empty( get_post_meta( $post_id , ZURCF7_META_PREFIX.'role', true ) ) ? get_post_meta( $post_id , ZURCF7_META_PREFIX.'role', true ) : '' );
+					echo esc_html( !empty( get_post_meta( $post_id , ZURCF7_META_PREFIX.'role', true ) ) ? get_post_meta( $post_id , ZURCF7_META_PREFIX.'role', true ) : '' );
 				break;
 
 			}
@@ -226,7 +226,7 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 					<tr>
 						<th><label for="type"><?php _e("Type"); ?></label></th>
 						<td>
-							<span class="description"><?php echo $social_type; ?></span>
+							<span class="description"><?php echo esc_html($social_type); ?></span>
 						</td>
 					</tr>
 				</table>
