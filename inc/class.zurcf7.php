@@ -162,7 +162,7 @@ if ( !class_exists( 'ZURCF7' ) ) {
 		function action__zurcf7_admin_notices_deactive() {
 			echo '<div class="error">' .
 					sprintf(
-						esc_html__( '<p><strong><a href="https://wordpress.org/plugins/contact-form-7/" target="_blank">Contact Form 7</a></strong> is required to use <strong>%s</strong>.</p>', 'zeal-user-reg-cf7' ),
+						__( '<p><strong><a href="https://wordpress.org/plugins/contact-form-7/" target="_blank">Contact Form 7</a></strong> is required to use <strong>%s</strong>.</p>', 'zeal-user-reg-cf7' ), //phpcs:ignore
 						'User Registration using Contact Form 7'
 					) .
 				'</div>';
