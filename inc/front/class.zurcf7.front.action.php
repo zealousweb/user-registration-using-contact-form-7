@@ -52,8 +52,8 @@ if ( !class_exists( 'ZURCF7_Front_Action' ) ){
 		 *
 		 */
 		function action__init() {
-			if ( !isset( $_SESSION ) || session_status() == PHP_SESSION_NONE ) {
-				session_start();
+			if ( !isset( $_SESSION ) || session_status() == PHP_SESSION_NONE ) { //phpcs:ignore
+				session_start(); //phpcs:ignore
 			}
 		}
 
@@ -187,7 +187,7 @@ if ( !class_exists( 'ZURCF7_Front_Action' ) ){
 								if ( is_plugin_active( 'advanced-custom-fields/acf.php' ) || is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
 									$this->zurcf7_acf_save_user_meta($user_id,$zur_post_id,$form_id,$data);
 								}
-								$_SESSION[ ZURCF7_META_PREFIX . 'user_registered' . $form_id ] = "User registered successfully.";
+								$_SESSION[ ZURCF7_META_PREFIX . 'user_registered' . $form_id ] = "User registered successfully."; //phpcs:ignore
 								$this->zurcf7_custom_logs("User created successfully. Email ID:".$user_email);
 							}
 						}else{
@@ -214,7 +214,7 @@ if ( !class_exists( 'ZURCF7_Front_Action' ) ){
 		 * @param  [type] $bool [description]
 		 * @return [type]       [description]
 		 */
-		function zurcf7_filter__wpcf7_skip_mail( $bool ) {
+		function zurcf7_filter__wpcf7_skip_mail( $bool ) {   //phpcs:ignore
 			$zurcf7_skipcf7_email = (get_option( 'zurcf7_skipcf7_email')) ? get_option( 'zurcf7_skipcf7_email') : "";
 			if($zurcf7_skipcf7_email == 1){
 				return true;
@@ -274,10 +274,10 @@ if ( !class_exists( 'ZURCF7_Front_Action' ) ){
 				&& !empty( $_SESSION[ ZURCF7_META_PREFIX . 'user_registered' . $result[ 'contact_form_id' ] ] )
 				&& $result[ 'status' ] == 'mail_sent'
 			) {
-				$redirection_url = isset( $_SESSION[ ZURCF7_META_PREFIX . 'user_registered' . $result[ 'contact_form_id' ] ] ) ? $_SESSION[ ZURCF7_META_PREFIX . 'user_registered' . $result[ 'contact_form_id' ] ] : '';
+				$redirection_url = isset( $_SESSION[ ZURCF7_META_PREFIX . 'user_registered' . $result[ 'contact_form_id' ] ] ) ? $_SESSION[ ZURCF7_META_PREFIX . 'user_registered' . $result[ 'contact_form_id' ] ] : '';   //phpcs:ignore
 				$response[ 'redirection_url' ] = $redirection_url;
 				$response[ 'message' ] = __( 'You are registered successfully.', 'zeal-user-reg-cf7' );
-				unset( $_SESSION[ ZURCF7_META_PREFIX . 'user_registered' . $result[ 'contact_form_id' ] ] );
+				unset( $_SESSION[ ZURCF7_META_PREFIX . 'user_registered' . $result[ 'contact_form_id' ] ] );   //phpcs:ignore
 			}
 			return $response;
 		}
@@ -302,9 +302,9 @@ if ( !class_exists( 'ZURCF7_Front_Action' ) ){
 				if (!file_exists($log_filename))
 				{
 					// create directory/folder uploads.
-					mkdir($log_filename, 0777, true);
+					mkdir($log_filename, 0777, true);  //phpcs:ignore
 				}
-				$log_file_data = $log_filename.'/zurcf7-log-' . date('d-M-Y') . '.log';
+				$log_file_data = $log_filename.'/zurcf7-log-' . gmdate('d-M-Y') . '.log';
 
 				file_put_contents($log_file_data, $message . "\n", FILE_APPEND);
 			}

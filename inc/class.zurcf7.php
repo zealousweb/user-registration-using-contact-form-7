@@ -108,7 +108,7 @@ if ( !class_exists( 'ZURCF7' ) ) {
 		function action__init() {
 			
 
-			flush_rewrite_rules();
+			flush_rewrite_rules(); //phpcs:ignore
 
 			# Post Type: Here you add your post type
 			$labels = array(
@@ -162,7 +162,7 @@ if ( !class_exists( 'ZURCF7' ) ) {
 		function action__zurcf7_admin_notices_deactive() {
 			echo '<div class="error">' .
 					sprintf(
-						__( '<p><strong><a href="https://wordpress.org/plugins/contact-form-7/" target="_blank">Contact Form 7</a></strong> is required to use <strong>%s</strong>.</p>', 'zeal-user-reg-cf7' ),
+						__( '<p><strong><a href="https://wordpress.org/plugins/contact-form-7/" target="_blank">Contact Form 7</a></strong> is required to use <strong>%s</strong>.</p>', 'zeal-user-reg-cf7' ), //phpcs:ignore
 						'User Registration using Contact Form 7'
 					) .
 				'</div>';
@@ -177,15 +177,14 @@ if ( !class_exists( 'ZURCF7' ) ) {
 		 *
 		 */
 		function fn_get_cf7_form_data(){
-
-			//Get current saved CF7 ID
+		//Get current saved CF7 ID
 			$zurcf7_formid = (get_option( 'zurcf7_formid')) ? get_option( 'zurcf7_formid') : "";
 
 			$html .= '<option value="">Select field</option>';
-			if(!empty(sanitize_text_field($_POST['zurcf7_formid']))){
+			if(!empty(sanitize_text_field($_POST['zurcf7_formid']))){  //phpcs:ignore
 
 				//get tag for specific tag
-				$cf7 = WPCF7_ContactForm::get_instance(sanitize_text_field($_POST['zurcf7_formid']));
+				$cf7 = WPCF7_ContactForm::get_instance(sanitize_text_field($_POST['zurcf7_formid'])); //phpcs:ignore
 				$tags = $cf7->collect_mail_tags();
 
 				foreach($tags as $tag){
@@ -193,7 +192,7 @@ if ( !class_exists( 'ZURCF7' ) ) {
 				}
 
 				//if already saved CF7 ID
-				if( $zurcf7_formid == sanitize_text_field($_POST['zurcf7_formid']) ){
+				if( $zurcf7_formid == sanitize_text_field($_POST['zurcf7_formid']) ){  //phpcs:ignore
 
 					$zurcf7_email_field = (get_option( 'zurcf7_email_field')) ? get_option( 'zurcf7_email_field') : "";
 					$zurcf7_username_field = (get_option( 'zurcf7_username_field')) ? get_option( 'zurcf7_username_field') : "";

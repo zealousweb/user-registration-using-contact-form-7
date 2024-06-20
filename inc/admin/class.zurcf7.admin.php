@@ -193,7 +193,9 @@ if ( !class_exists( 'ZURCF7_Admin' ) ) {
 			//Registration form tags
 			if(!empty($zurcf7_formid)){
 				$cf7 = WPCF7_ContactForm::get_instance($zurcf7_formid);
-				$tags = $cf7->collect_mail_tags();
+				if (isset($cf7) && method_exists($cf7, 'collect_mail_tags')) {
+					$tags = $cf7->collect_mail_tags();
+				}
 			}
 
 			//Login form tags
@@ -223,7 +225,7 @@ if ( !class_exists( 'ZURCF7_Admin' ) ) {
 		function action__admin_notices_zurcf7_nonce_issue(){
 			echo '<div class="error">' .
 				sprintf(
-					__( '<p>Nonce issue.. Please try again.</p>', 'zeal-user-reg-cf7' ),
+					esc_html__( '<p>Nonce issue.. Please try again.</p>', 'zeal-user-reg-cf7' ),
 					'User Registration Using Contact Form 7'
 				) .
 			'</div>';

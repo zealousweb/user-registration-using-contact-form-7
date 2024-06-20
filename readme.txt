@@ -5,10 +5,10 @@ Donate Link: http://www.zealousweb.net/payment/
 Tags: user registration, user login, forgot password, contact form 7
 Requires at least: 3.5
 Tested up to:  6.5
-Stable tag: 2.0
+Stable tag: 2.1
 Requires PHP: 5.6
 License: GPLv3 or later License
-Version: 2.0
+Version: 2.1
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 User Registration Using Contact Form 7 plugin provides the feature to register the user to the website.
@@ -87,6 +87,9 @@ Installing the plugin is easy. Just follow these steps:
 9. This is how the Password field will display in the front-end.
 
 == Changelog ==
+
+= 2.1 =
+* Improved compatibility with WordPress VIP platform by refactoring code to adhere to VIP coding standards.
 
 = 2.0 =
 * Advanced Custom Fields (ACF) mapped
