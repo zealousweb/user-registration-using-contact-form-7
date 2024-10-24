@@ -38,7 +38,7 @@ User Registration Using Contact Form 7 plugin provides the feature to register t
 - WooCommerce Field Mapping
 - Compatibility of WordPress VIP.
 
-<strong>[Demo for Abandoned Contact Form 7 Pro](https://demo.zealousweb.com/wordpress-plugins/user-registration-using-contact-form-7-pro/))</strong>
+<strong>[Demo for User Registration Using Contact Form 7 Pro](https://demo.zealousweb.com/wordpress-plugins/user-registration-using-contact-form-7-pro/))</strong>
 
 # PLUGIN REQUIREMENT
 - PHP version : 5.4 and latest
