@@ -1,10 +1,10 @@
 === User Registration Using Contact Form 7 ===
 
 Contributors: zealopensource
-Donate Link: http://www.zealousweb.net/payment/
+Donate Link: http://www.zealousweb.com/payment/
 Tags: user registration, user login, forgot password, contact form 7
 Requires at least: 3.5
-Tested up to:  6.5
+Tested up to:  6.6
 Stable tag: 2.1
 Requires PHP: 5.6
 License: GPLv3 or later License
@@ -30,7 +30,9 @@ User Registration Using Contact Form 7 plugin provides the feature to register t
 * Option to set a URL to redirect users to a particular page after a user is registered.
 
 = Features of User Registration Using Contact Form 7 Pro =
-
+* **BuddyPress Profile Field Mapping:** Mapping field This should include a dropdown list showing all BP profile fields. This mapping can be saved and reused across multiple forms.
+* **Custom Field Mapping for BuddyPress Profiles:**  Custom fields (text, textarea) are mapped in a dedicated section for advanced users.
+* **BuddyPress Activity Stream Integration:** An option allows admins to enable or disable logging of user registration and profile updates to the BuddyPress activity stream.
 * Users can also login using the Contact Form 7 plugin.
 * Woocommerce field integration for the users to collect the data.
 * Custom validation message for reset password and forgot password.
@@ -48,7 +50,7 @@ User Registration Using Contact Form 7 plugin provides the feature to register t
 * WooCommerce Field Mapping
 * Compatibility of WordPress VIP.
 
-<strong>[Documentation](https://www.zealousweb.com/documentation/wordpress-plugins/userregistrationusingcontactform7pro/)</strong>
+<strong>[Documentation](https://store.zealousweb.com/pub/media/catalog/product/file/User_Registration_Using_Contact_Form_7_Pro_-_ZealousWeb1.pdf)</strong>
 <strong>[Get more information of Pro version here](https://store.zealousweb.com/wordpress-plugins/user-registration-using-contact-form-7-pro/)</strong>
 
 = Shortcodes =
