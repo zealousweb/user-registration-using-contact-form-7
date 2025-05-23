@@ -4,11 +4,11 @@ Contributors: zealopensource
 Donate Link: http://www.zealousweb.com/payment/
 Tags: user registration, user login, forgot password, contact form 7
 Requires at least: 3.5
-Tested up to:  6.7
-Stable tag: 2.2
+Tested up to:  6.8
+Stable tag: 2.3
 Requires PHP: 5.6
 License: GPLv3 or later License
-Version: 2.2
+Version: 2.3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 User Registration Using Contact Form 7 plugin provides the feature to register the user to the website.
@@ -28,6 +28,8 @@ User Registration Using Contact Form 7 plugin provides the feature to register t
 * An email consisting of an auto-generated password will be sent to the users after their registration is completed on the site.
 * There is a debug mode option for debugging.
 * Option to set a URL to redirect users to a particular page after a user is registered.
+
+<strong>[Demo for User Registration Using Contact Form 7](https://demo.zealousweb.com/wordpress-plugins/user-registration-using-contact-form-7/)</strong>
 
 = Features of User Registration Using Contact Form 7 Pro =
 * **BuddyPress Profile Field Mapping:** Mapping field This should include a dropdown list showing all BP profile fields. This mapping can be saved and reused across multiple forms.
@@ -50,8 +52,8 @@ User Registration Using Contact Form 7 plugin provides the feature to register t
 * WooCommerce Field Mapping
 * Compatibility of WordPress VIP.
 
-<strong>[Documentation](https://store.zealousweb.com/pub/media/catalog/product/file/User_Registration_Using_Contact_Form_7_Pro_-_ZealousWeb1.pdf)</strong>
-<strong>[Get more information of Pro version here](https://store.zealousweb.com/wordpress-plugins/user-registration-using-contact-form-7-pro/)</strong>
+<strong>[Get more information of Pro version here](https://store.zealousweb.com/user-registration-using-contact-form-7-pro)</strong>
+<strong>[Demo for User Registration Using Contact Form 7 Pro](https://demo.zealousweb.com/wordpress-plugins/user-registration-using-contact-form-7-pro/)</strong>
 
 = Shortcodes =
 You can use the below shortcode for Forgot Password:
@@ -66,6 +68,21 @@ Furthermore, if you need technical assistance to integrate ‘User Registration 
 We also offer custom WordPress extension development and WordPress theme design services to fulfill your e-commerce objectives.
 
 Thank you for choosing a Plugin developed by <strong>[ZealousWeb](https://www.zealousweb.com)</strong>!
+
+== OUR OTHER PLUGINS ==
+
+* <strong>[Abandoned Contact Form 7 Pro](https://store.zealousweb.com/wordpress-plugins/abandoned-contact-form-7-pro)</strong>
+* <strong>[Accept 2 Checkout Payments Using Contact Form 7 Pro](https://store.zealousweb.com/wordpress-plugins/accept-2checkout-payments-using-contact-form-7-pro)</strong>
+* <strong>[Accept Authorize.NET Payments Using Contact Form 7 Pro](https://store.zealousweb.com/wordpress-plugins/accept-authorize-net-payments-using-contact-form-7-pro)</strong>
+* <strong>[Accept Elavon Payments Using Contact Form 7 Pro](https://store.zealousweb.com/wordpress-plugins/accept-elavon-payments-using-contact-form-7-pro)</strong>
+* <strong>[Accept PayPal Payments Using Contact Form 7 Pro](https://store.zealousweb.com/wordpress-plugins/accept-paypal-payments-using-contact-form-7-pro)</strong>
+* <strong>[Accept Sagepay(Opayo) Payments Using Contact Form 7 Pro](https://store.zealousweb.com/wordpress-plugins/accept-sage-pay-opayo-payments-using-contact-form-7-pro)</strong>
+* <strong>[Accept Stripe Payments Using Contact Form 7 Pro](https://store.zealousweb.com/wordpress-plugins/accept-stripe-payments-using-contact-form-7-pro)</strong>
+* <strong>[Custom Product Options WooCommerce Pro](https://store.zealousweb.com/wordpress-plugins/custom-product-options-woocommerce-pro)</strong>
+* <strong>[Generate PDF Using Contact Form 7 Pro](https://store.zealousweb.com/wordpress-plugins/generate-pdf-using-contact-form-7-pro)</strong>
+* <strong>[Smart Appointment & Booking Pro](https://store.zealousweb.com/wordpress-plugins/smart-appointment-booking-pro)</strong>
+* <strong>[Smart Showcase for Google Reviews Pro](https://store.zealousweb.com/wordpress-plugins/smart-showcase-for-google-reviews-pro)</strong>
+* <strong>[User Registration Using Contact Form 7 Pro](https://store.zealousweb.com/wordpress-plugins/user-registration-using-contact-form-7-pro)</strong>
 
 == Installation ==
 
@@ -89,6 +106,9 @@ Installing the plugin is easy. Just follow these steps:
 9. This is how the Password field will display in the front-end.
 
 == Changelog ==
+
+= 2.3 =
+* Minor changes – Doc update
 
 = 2.2 =
 * Minor changes – Doc update
