@@ -14,21 +14,18 @@ function zurcf7_ACF_filter_array_function()
 	$response = array();
 	if ( is_plugin_active( 'advanced-custom-fields/acf.php' ) || is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
 		
-		$args =  array(     
-			'order'    => 'DESC',
-			'post_type' => 'acf-field-group',  
-		);
 		$temp_array = $resarr = $field_label = array();
-		$data = get_posts( $args );
+		$groups = acf_get_field_groups();
 		
-		foreach($data as $post){
+		foreach($groups as $group){
+
+        	$group_id = $group['ID']; 
 		
-			$group_id = $post->ID;		
 			$field_group = acf_get_field_group($group_id);		
-			if($field_group){
+			if ( $field_group ) {
 				$field_group_title = $field_group['title'];
 				$field_group_location = $field_group['location'];
-				foreach ($field_group_location as $rule_group) {
+				foreach ( $field_group_location as $rule_group ) {
 		
 					if ($rule_group[0]['param'] === 'current_user' || $rule_group[0]['param'] === 'current_user_role' || $rule_group[0]['param'] === 'user_form' || $rule_group[0]['param'] === 'user_role') {
 						

@@ -3,7 +3,7 @@
  * Plugin Name: User Registration Using Contact Form 7
  * Plugin URL: https://wordpress.org/plugin-url/
  * Description: User Registration Using Contact Form 7 plugin provide the feature to register the user to the website using Contact Form 7.
- * Version: 2.3
+ * Version: 2.4
  * Author: ZealousWeb
  * Author URI: https://www.zealousweb.com/
  * Developer: The ZealousWeb Team
@@ -23,11 +23,11 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * Basic plugin definitions
  *
  * @package User Registration Using Contact Form 7
- * @since 2.3
+ * @since 2.4
  */
 
 if ( !defined( 'ZURCF7_VERSION' ) ) {
-	define( 'ZURCF7_VERSION', '2.3' ); // Version of plugin
+	define( 'ZURCF7_VERSION', '2.4' ); // Version of plugin
 }
 
 if ( !defined( 'ZURCF7_FILE' ) ) {
