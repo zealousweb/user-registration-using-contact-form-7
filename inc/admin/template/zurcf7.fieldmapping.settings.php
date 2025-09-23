@@ -28,7 +28,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<?php echo esc_html__('1. Supported ACF Fields: Text, Textarea, Checkbox, Radio, Select(Dropdown with multiple Select), Number, Date Picker, Email, Link, Date picker, Date Timepicker, Password. <br> 2. To avoid conflict use same field name and Type while configuring & mapping ACF fields and cf7 fields. <br> 3. Make sure option values are correct while configuring Dropdown, Radio, Checkbox Fields ','zeal-user-reg-cf7'); ?>
+						<?php echo wp_kses_post( __('1. Supported ACF Fields: Text, Textarea, Checkbox, Radio, Select(Dropdown with multiple Select), Number, Date Picker, Email, Link, Date picker, Date Timepicker, Password.<br>2. To avoid conflict use same field name and Type while configuring & mapping ACF fields and cf7 fields.<br>3. Make sure option values are correct while configuring Dropdown, Radio, Checkbox Fields', 'zeal-user-reg-cf7') ); ?>
 					</td>
 				</tr>
 				<?php 
