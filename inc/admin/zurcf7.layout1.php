@@ -7,18 +7,17 @@ echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Global Newsletter</title>
     <style type="text/css">
-      @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap");
-
+      /* Font loading removed - using system fonts for WordPress compliance */
     </style>
   </head>
-  <body style="margin:0; padding:0; background-color:#FAFAFA; font-family: Roboto, Arial, sans-serif;">
+  <body style="margin:0; padding:0; background-color:#FAFAFA; font-family: Arial, sans-serif;">
     <!-- Preheader text  -->
-    <table style="max-width: 800px; margin: 0 auto;width: 100%; font-family: Roboto, Arial, sans-serif; border: 1px solid #ccc;" cellspacing="0">
+    <table style="max-width: 800px; margin: 0 auto;width: 100%; font-family: Arial, sans-serif; border: 1px solid #ccc;" cellspacing="0">
         <thead style="padding: 30px; background-color: #efefef;">
           <tr>
             <td style="text-align: center; padding-bottom: 20px;">
               <br>
-              <img src="https://www.zealousweb.com/store/pub/media/logo/default/zealousweb.png">
+              <!-- Logo image removed - external images not allowed per WordPress guidelines -->
               </br>
               </br>
             </td>
@@ -50,16 +49,16 @@ echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www
             <tr>
               <td>
                 <p style="color: #fff; text-align: center; font-size: 16px;line-height: 24px;
-                font-family: Roboto, Arial, sans-serif; max-width: 400px; margin: 0 auto; padding: 50px 0 10px 0;">This email was send to <a style="color: #fff;" href="mailto:testemail@gmail.com">testemail@gmail.com</a> from <a style="color: #fff;" href="mailto:support@zealousweb.com">support@zealousweb.com</a></p>
+                font-family: Arial, sans-serif; max-width: 400px; margin: 0 auto; padding: 50px 0 10px 0;">This email was send to <a style="color: #fff;" href="mailto:testemail@gmail.com">testemail@gmail.com</a> from <a style="color: #fff;" href="mailto:support@zealousweb.com">support@zealousweb.com</a></p>
               </td>
             </tr>
             <tr>
               <td>
                 <table style="margin: 0 auto; padding: 10px 0;">
                   <tr>
-                    <td style="border-right: 2px solid #fff;"><a href="#" style="color: #fff; font-size: 16px; text-decoration: none; padding: 0 5px; font-family: Roboto, Arial, sans-serif;">UNSUBSCRIBE</a></td>
-                    <td style="border-right: 2px solid #fff;"><a href="#" style="color: #fff; font-size: 16px; text-decoration: none; padding: 0 5px; font-family: Roboto, Arial, sans-serif;">PRIVACY POLICY</a></td>
-                    <td><a href="#" style="color: #fff; font-size: 16px; text-decoration: none; padding: 0 5px; font-family: Roboto, Arial, sans-serif;">WEB</a></td>
+                    <td style="border-right: 2px solid #fff;"><a href="#" style="color: #fff; font-size: 16px; text-decoration: none; padding: 0 5px; font-family: Arial, sans-serif;">UNSUBSCRIBE</a></td>
+                    <td style="border-right: 2px solid #fff;"><a href="#" style="color: #fff; font-size: 16px; text-decoration: none; padding: 0 5px; font-family: Arial, sans-serif;">PRIVACY POLICY</a></td>
+                    <td><a href="#" style="color: #fff; font-size: 16px; text-decoration: none; padding: 0 5px; font-family: Arial, sans-serif;">WEB</a></td>
                   </tr>
                   
                 </table>

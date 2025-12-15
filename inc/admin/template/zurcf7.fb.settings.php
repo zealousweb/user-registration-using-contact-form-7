@@ -25,10 +25,10 @@
     <tr>
         <td colspan="2">
         <?php 
-        $domain_name = $callback_fb = $site_url_callback_fb = $zurcf7_fb_signup_app_id = $zurcf7_fb_app_secret = '';
-        $domain_name = sanitize_text_field($_SERVER['HTTP_HOST']);  //phpcs:ignore
-        $callback_fb = '?socialsignup=facebook';
-        $site_url_callback_fb = get_site_url().$callback_fb;
+        $zurcf7_domain_name = $zurcf7_callback_fb = $zurcf7_site_url_callback_fb = $zurcf7_fb_signup_app_id = $zurcf7_fb_app_secret = '';
+        $zurcf7_domain_name = sanitize_text_field($_SERVER['HTTP_HOST']);  //phpcs:ignore
+        $zurcf7_callback_fb = '?socialsignup=facebook';
+        $zurcf7_site_url_callback_fb = get_site_url().$zurcf7_callback_fb;
         $zurcf7_fb_signup_app_id = (get_option( 'zurcf7_fb_signup_app_id')) ? get_option( 'zurcf7_fb_signup_app_id') : "";
         $zurcf7_fb_app_secret = (get_option( 'zurcf7_fb_app_secret')) ? get_option( 'zurcf7_fb_app_secret') : "";
         ?>
@@ -38,11 +38,11 @@
                 <li><?php echo wp_kses( "Enter App Display Name, App Contact Email.</li>", "user-registration-using-contact-form-7" ); ?>
                 <li><?php echo wp_kses( "Click on Create App button and complete the Security Check.</li>", "user-registration-using-contact-form-7" ); ?>
                 <li><?php echo wp_kses( "On add products to your app page click on setup button under facebook login option.</li>", "user-registration-using-contact-form-7" ); ?>
-                <li><?php echo wp_kses( "Enter ".$domain_name." in App Domain. Enter your Privacy Policy URL</li>", "user-registration-using-contact-form-7" ); ?>
+                <li><?php echo wp_kses( "Enter ".$zurcf7_domain_name." in App Domain. Enter your Privacy Policy URL</li>", "user-registration-using-contact-form-7" ); ?>
                 <li><?php echo wp_kses( "Under User Data Deletion click on the drop down, Select Data Deletion Instruction URl (Enter the URL of your page with the instructions on how users can delete their accounts on your site).</li>", "user-registration-using-contact-form-7" ); ?>
                 <li><?php echo wp_kses( "Select Category of your website. Then click on Save Changes.</li>", "user-registration-using-contact-form-7" ); ?>
                 <li><?php echo wp_kses( "On the Left side panel, Click on Facebook Login and select Settings option.</li>", "user-registration-using-contact-form-7" ); ?>
-                <li><?php echo wp_kses( "Scroll down and add the following URL to the Valid OAuth redirect URIs field <a>".$site_url_callback_fb."</a> and click on Save Changes button.</li>", "user-registration-using-contact-form-7" ); ?>
+                <li><?php echo wp_kses( "Scroll down and add the following URL to the Valid OAuth redirect URIs field <a>".$zurcf7_site_url_callback_fb."</a> and click on Save Changes button.</li>", "user-registration-using-contact-form-7" ); ?>
                 <li><?php echo wp_kses( "Click on the App review tab from the left hand side menu and click on Permissions and Request</li>", "user-registration-using-contact-form-7" ); ?>
                 <li><?php echo wp_kses( "Now click on Request Advance Access for public_profile and email. If you want any extra data to be returned you can request permission for those scopes.</li>", "user-registration-using-contact-form-7" ); ?>
                 <li><?php echo wp_kses( "In the toolbar Change your app status from In Development to Live by clicking on the toggle button and further Click on Switch Mode.</li>", "user-registration-using-contact-form-7" ); ?>

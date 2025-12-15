@@ -61,8 +61,9 @@ if ( !class_exists( 'ZURCF7_Admin' ) ) {
 
 			}else{
 				remove_menu_page( 'edit.php?post_type=zuserreg_data' );
-				if(isset($_GET['post_type']) && ($_GET['post_type'] === ZURCF7_POST_TYPE))
-					wp_die( 'Cheatin’ uh?' );
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Display check, not form processing
+				if(isset($_GET['post_type']) && (sanitize_text_field(wp_unslash($_GET['post_type'])) === ZURCF7_POST_TYPE))
+					wp_die( 'Cheatin\' uh?' );
 			}
 		}
 
@@ -99,8 +100,10 @@ if ( !class_exists( 'ZURCF7_Admin' ) ) {
 			wp_enqueue_style( ZURCF7_PREFIX . '-admin-css');
 			wp_enqueue_script( ZURCF7_PREFIX . '-admin-js');
 
+			// Verify nonce for form submissions
 			if( isset( $_REQUEST['_zurcf7_settings_nonce'] ) && $_REQUEST['_zurcf7_settings_nonce'] != '' ) {
-				if( ! wp_verify_nonce( $_REQUEST['_zurcf7_settings_nonce'], 'zurcf7_settings_nonce' ) ){
+				$nonce = isset( $_REQUEST['_zurcf7_settings_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_zurcf7_settings_nonce'] ) ) : '';
+				if( ! wp_verify_nonce( $nonce, 'zurcf7_settings_nonce' ) ){
 					add_action( 'admin_notices', array( $this, 'action__admin_notices_zurcf7_nonce_issue' ) );
 					return;
 				}
@@ -108,13 +111,19 @@ if ( !class_exists( 'ZURCF7_Admin' ) ) {
 
 			//save settings in admin
 			if(isset($_REQUEST['setting_zurcf7_submit'])){
-				if(isset($_POST['zurcf7_formid'])) update_option( 'zurcf7_formid', sanitize_text_field($_POST['zurcf7_formid']));
-				isset($_POST['zurcf7_debug_mode_status']) ? update_option( 'zurcf7_debug_mode_status', sanitize_text_field($_POST['zurcf7_debug_mode_status'])) : update_option( 'zurcf7_debug_mode_status', "");
-				isset($_POST['zurcf7_skipcf7_email']) ? update_option( 'zurcf7_skipcf7_email', sanitize_text_field($_POST['zurcf7_skipcf7_email'])) : update_option( 'zurcf7_skipcf7_email', "");
-				if(isset($_POST['zurcf7_successurl_field'])) update_option( 'zurcf7_successurl_field', sanitize_text_field($_POST['zurcf7_successurl_field']));
-				if(isset($_POST['zurcf7_email_field']) && $_POST['zurcf7_email_field'] != '') update_option( 'zurcf7_email_field', sanitize_text_field($_POST['zurcf7_email_field']));
-				if(isset($_POST['zurcf7_username_field']) && $_POST['zurcf7_username_field'] != '') update_option( 'zurcf7_username_field', sanitize_text_field($_POST['zurcf7_username_field']));
-				if(isset($_POST['zurcf7_userrole_field']) && $_POST['zurcf7_userrole_field'] != '') update_option( 'zurcf7_userrole_field', sanitize_text_field($_POST['zurcf7_userrole_field']));
+				// Verify nonce before processing form data
+				if( ! isset( $_REQUEST['_zurcf7_settings_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['_zurcf7_settings_nonce'] ) ), 'zurcf7_settings_nonce' ) ){
+					add_action( 'admin_notices', array( $this, 'action__admin_notices_zurcf7_nonce_issue' ) );
+					return;
+				}
+
+				if(isset($_POST['zurcf7_formid'])) update_option( 'zurcf7_formid', sanitize_text_field(wp_unslash($_POST['zurcf7_formid'])));
+				isset($_POST['zurcf7_debug_mode_status']) ? update_option( 'zurcf7_debug_mode_status', sanitize_text_field(wp_unslash($_POST['zurcf7_debug_mode_status']))) : update_option( 'zurcf7_debug_mode_status', "");
+				isset($_POST['zurcf7_skipcf7_email']) ? update_option( 'zurcf7_skipcf7_email', sanitize_text_field(wp_unslash($_POST['zurcf7_skipcf7_email']))) : update_option( 'zurcf7_skipcf7_email', "");
+				if(isset($_POST['zurcf7_successurl_field'])) update_option( 'zurcf7_successurl_field', sanitize_text_field(wp_unslash($_POST['zurcf7_successurl_field'])));
+				if(isset($_POST['zurcf7_email_field']) && $_POST['zurcf7_email_field'] != '') update_option( 'zurcf7_email_field', sanitize_text_field(wp_unslash($_POST['zurcf7_email_field'])));
+				if(isset($_POST['zurcf7_username_field']) && $_POST['zurcf7_username_field'] != '') update_option( 'zurcf7_username_field', sanitize_text_field(wp_unslash($_POST['zurcf7_username_field'])));
+				if(isset($_POST['zurcf7_userrole_field']) && $_POST['zurcf7_userrole_field'] != '') update_option( 'zurcf7_userrole_field', sanitize_text_field(wp_unslash($_POST['zurcf7_userrole_field'])));
 
 				//Start Save ACF Fields
 				if ( is_plugin_active( 'advanced-custom-fields/acf.php' ) || is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
@@ -125,7 +134,7 @@ if ( !class_exists( 'ZURCF7_Admin' ) ) {
 							$field_name = $value['field_name'];
 							if($count != 3) {
 								// Perform blank check before updating option
-								$field_value = isset($_POST[$field_name]) ? sanitize_text_field($_POST[$field_name]) : '';
+								$field_value = isset($_POST[$field_name]) ? sanitize_text_field(wp_unslash($_POST[$field_name])) : '';
 								update_option($field_name, $field_value);
 								
 							}
@@ -135,15 +144,20 @@ if ( !class_exists( 'ZURCF7_Admin' ) ) {
 				}
 				//End Save ACF Fields
 				//Start FB Fields
-				isset($_POST['zurcf7_fb_signup_app_id']) ? update_option( 'zurcf7_fb_signup_app_id', sanitize_text_field($_POST['zurcf7_fb_signup_app_id'])) : update_option( 'zurcf7_fb_signup_app_id', "");
-				isset($_POST['zurcf7_fb_app_secret']) ? update_option( 'zurcf7_fb_app_secret', sanitize_text_field($_POST['zurcf7_fb_app_secret'])) : update_option( 'zurcf7_fb_app_secret', "");
+				isset($_POST['zurcf7_fb_signup_app_id']) ? update_option( 'zurcf7_fb_signup_app_id', sanitize_text_field(wp_unslash($_POST['zurcf7_fb_signup_app_id']))) : update_option( 'zurcf7_fb_signup_app_id', "");
+				isset($_POST['zurcf7_fb_app_secret']) ? update_option( 'zurcf7_fb_app_secret', sanitize_text_field(wp_unslash($_POST['zurcf7_fb_app_secret']))) : update_option( 'zurcf7_fb_app_secret', "");
 				//End FB Fields
-				isset($_POST['zurcf7_enable_sent_login_url']) ? update_option( 'zurcf7_enable_sent_login_url', sanitize_text_field($_POST['zurcf7_enable_sent_login_url'])) : update_option( 'zurcf7_enable_sent_login_url', "");
+				isset($_POST['zurcf7_enable_sent_login_url']) ? update_option( 'zurcf7_enable_sent_login_url', sanitize_text_field(wp_unslash($_POST['zurcf7_enable_sent_login_url']))) : update_option( 'zurcf7_enable_sent_login_url', "");
 				
 			}
 
 			//reset all the settings.
 			if(isset($_REQUEST['setting_reset'])){
+				// Verify nonce before processing reset
+				if( ! isset( $_REQUEST['_zurcf7_settings_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['_zurcf7_settings_nonce'] ) ), 'zurcf7_settings_nonce' ) ){
+					add_action( 'admin_notices', array( $this, 'action__admin_notices_zurcf7_nonce_issue' ) );
+					return;
+				}
 				update_option( 'zurcf7_formid', "");
 				update_option( 'zurcf7_email_field', "");
 				update_option( 'zurcf7_username_field', "");
@@ -224,10 +238,7 @@ if ( !class_exists( 'ZURCF7_Admin' ) ) {
 		 */
 		function action__admin_notices_zurcf7_nonce_issue(){
 			echo '<div class="error">' .
-				sprintf(
-					esc_html__( '<p>Nonce issue.. Please try again.</p>', 'user-registration-using-contact-form-7' ),
-					'User Registration Using Contact Form 7'
-				) .
+				'<p>' . esc_html__( 'Nonce issue.. Please try again.', 'user-registration-using-contact-form-7' ) . '</p>' .
 			'</div>';
 		}
 

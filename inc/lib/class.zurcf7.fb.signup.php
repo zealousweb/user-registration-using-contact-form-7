@@ -11,7 +11,7 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-require_once( ZURCF7_DIR . '/inc/lib/zurcf7-fb-lib/src/Facebook/autoload.php' );
+require_once( ZURCF7_DIR . '/inc/lib/zurcf7-fb-lib/src/Facebook/autoload.php' ); 
 
 use Facebook\Facebook;
 use Facebook\Exceptions\FacebookResponseException;
@@ -89,7 +89,7 @@ if ( !class_exists( 'ZURCF7_Facebook_Signup' ) ) {
 				</fieldset>
 			</div>
 			<div class="insert-box">
-				<input type="text" name="<?php echo $type; ?>" class="tag code" readonly="readonly" onfocus="this.select()" />
+				<input type="text" name="<?php echo esc_attr( $type ); ?>" class="tag code" readonly="readonly" onfocus="this.select()" />
 					<div class="submitbox">
 						<input type="button" class="button button-primary insert-tag" value="<?php echo esc_attr( __( 'Insert Tag', 'user-registration-using-contact-form-7' ) ); ?>" />
 					</div>
@@ -157,11 +157,16 @@ if ( !class_exists( 'ZURCF7_Facebook_Signup' ) ) {
 
 		 function save_facebook_signup_data() {
 
-			if ( ! isset( $_REQUEST['socialsignup'] ) || 'facebook' == $_REQUEST['socialsignup'] ){
+			// Sanitize and verify socialsignup parameter
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- OAuth callback handler, uses state parameter for CSRF protection
+			$socialsignup = isset( $_REQUEST['socialsignup'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['socialsignup'] ) ) : '';
+			if ( 'facebook' === $socialsignup ){
 				global $wpdb;
 				$current_form_id = '';
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- OAuth callback handler, form_id is sanitized
 				if(isset($_GET['form_id'])) {
-					$current_form_id = $_GET['form_id'];
+					// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- OAuth callback handler, form_id is sanitized
+					$current_form_id = absint( wp_unslash( $_GET['form_id'] ) );
 				}
 				$site_url = get_site_url();
 				$zurcf7_successurl_field = (get_option('zurcf7_successurl_field')) ? get_option('zurcf7_successurl_field') : get_option('zurcf7_successurl_field',"");
@@ -186,13 +191,16 @@ if ( !class_exists( 'ZURCF7_Facebook_Signup' ) ) {
 				));
 				$helper = $fb->getRedirectLoginHelper();
 
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- OAuth callback handler, state parameter is used for CSRF protection
 				if (isset($_GET['state'])) {
-					$helper->getPersistentDataHandler()->set('state', $_GET['state']);
+					// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- OAuth callback handler, state parameter is used for CSRF protection
+					$state = sanitize_text_field( wp_unslash( $_GET['state'] ) );
+					$helper->getPersistentDataHandler()->set('state', $state);
 				}
 
 				try {
 					if(isset($_SESSION['facebook_access_token_news'])){
-						$accessToken = $_SESSION['facebook_access_token_news'];
+						$accessToken = sanitize_text_field( $_SESSION['facebook_access_token_news'] );
 					}else{
 						  $accessToken = $fb->getRedirectLoginHelper()->getAccessToken($site_callback_facebook);
 					}
@@ -205,7 +213,8 @@ if ( !class_exists( 'ZURCF7_Facebook_Signup' ) ) {
 				if(isset($accessToken)) {
 
 					if(isset($_SESSION['facebook_access_token_news'])) {
-						$fb->setDefaultAccessToken($_SESSION['facebook_access_token_news']);
+						$session_token = sanitize_text_field( $_SESSION['facebook_access_token_news'] );
+						$fb->setDefaultAccessToken($session_token);
 					}else{
 						// Put short-lived access token in session
 						$_SESSION['facebook_access_token_news'] = (string) $accessToken;
@@ -214,11 +223,13 @@ if ( !class_exists( 'ZURCF7_Facebook_Signup' ) ) {
 						$oAuth2Client = $fb->getOAuth2Client();
 						
 						// Exchanges a short-lived access token for a long-lived one
-						$longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($_SESSION['facebook_access_token_news']);
+						$session_token = sanitize_text_field( $_SESSION['facebook_access_token_news'] );
+						$longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($session_token);
 						$_SESSION['facebook_access_token_news'] = (string) $longLivedAccessToken;
 						
 						// Set default access token to be used in script
-						$fb->setDefaultAccessToken($_SESSION['facebook_access_token_news']);
+						$session_token = sanitize_text_field( $_SESSION['facebook_access_token_news'] );
+						$fb->setDefaultAccessToken($session_token);
 					}
 					
 					// Redirect the user back to the same page if url has "code" parameter in query string
@@ -227,11 +238,11 @@ if ( !class_exists( 'ZURCF7_Facebook_Signup' ) ) {
 						$graphResponse = $fb->get('/me?fields=email');
 						$fb_User = $graphResponse->getGraphUser();
 					} catch(FacebookResponseException $e) {
-						echo 'Graph returned an error: ' . $e->getMessage();
+						echo 'Graph returned an error: ' . esc_html( $e->getMessage() );
 						session_destroy();
 						exit;
 					} catch(FacebookSDKException $e) {
-						echo 'Facebook SDK returned an error: ' . $e->getMessage();
+						echo 'Facebook SDK returned an error: ' . esc_html( $e->getMessage() );
 						exit;
 					}
 					$generate_password = $this->password_generate(7);
@@ -245,15 +256,29 @@ if ( !class_exists( 'ZURCF7_Facebook_Signup' ) ) {
 					$user_id = wp_insert_user( $userdata );
 
 					// Check if post already exist
-					$query = $wpdb->prepare(
-						'SELECT ID FROM ' . $wpdb->posts . '
-						WHERE post_title = %s
-						AND post_type = \''.ZURCF7_POST_TYPE.'\'',
-						$fb_email
-					);
-					$wpdb->query( $query );
+					$cache_key = 'zurcf7_post_exists_' . md5( $fb_email . ZURCF7_POST_TYPE );
+					$post_exists = wp_cache_get( $cache_key );
+					
+					if ( false === $post_exists ) {
+						$existing_posts = get_posts( array(
+							'post_type'      => ZURCF7_POST_TYPE,
+							'posts_per_page' => -1,
+							'fields'         => 'ids',
+						) );
+						
+						// Filter by exact title match
+						$post_exists = false;
+						foreach ( $existing_posts as $post_id ) {
+							if ( get_the_title( $post_id ) === $fb_email ) {
+								$post_exists = true;
+								break;
+							}
+						}
+						
+						wp_cache_set( $cache_key, $post_exists, '', 300 ); // Cache for 5 minutes
+					}
 
-					if ( $wpdb->num_rows == 0 ) {
+					if ( ! $post_exists ) {
 						$zurcf_post_id_post = wp_insert_post( array (
 							'post_type'      => ZURCF7_POST_TYPE,
 							'post_title'     => $fb_email, // email
@@ -278,9 +303,12 @@ if ( !class_exists( 'ZURCF7_Facebook_Signup' ) ) {
 							$login_url = wp_login_url();
 							$blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
 							$message = "Welcome! Your login details are as follows:" . "\r\n";
+							// translators: %s: User's email address used as username
 							$message .= sprintf(__('Username: %s', 'user-registration-using-contact-form-7'), $fb_email) . "\r\n";
+							// translators: %s: User's password
 							$message .= sprintf(__('Password: %s', 'user-registration-using-contact-form-7'), $generate_password) . "\r\n";
 							$message .= $login_url . "\r\n";
+							// translators: %s: Site name
 							wp_mail($fb_email, sprintf(__('[%s] Your username and password', 'user-registration-using-contact-form-7'), $blogname), $message);
 							
 						}
@@ -291,7 +319,7 @@ if ( !class_exists( 'ZURCF7_Facebook_Signup' ) ) {
 						'remember'      => true
 					);
 					$booking_base_url = (!empty($booking_url)) ? $booking_url : $site_url;
-					wp_redirect($booking_base_url);
+					wp_safe_redirect($booking_base_url);
 					exit();
 					
 				}

@@ -1,0 +1,168 @@
+# Copyright (C) 2009-2020 ZealousWeb
+# This file is distributed under the same license as the User Registration Using Contact Form 7 plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: User Registration Using Contact Form 7 2.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/user-registration-using-contact-form-7\n"
+"POT-Creation-Date: 2025-12-15 16:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: inc/class.zurcf7.php:115
+msgid "CF7 User Registration "
+msgstr ""
+
+#: inc/class.zurcf7.php:116
+msgid "Registered User"
+msgstr ""
+
+#: inc/class.zurcf7.php:117
+msgid "All Registered Users"
+msgstr ""
+
+#: inc/class.zurcf7.php:118
+msgid "Registered User Detail"
+msgstr ""
+
+#: inc/class.zurcf7.php:119
+msgid "Search Registered User"
+msgstr ""
+
+#: inc/class.zurcf7.php:120
+msgid "View Registered User"
+msgstr ""
+
+#: inc/class.zurcf7.php:121
+msgid "No Registered User found"
+msgstr ""
+
+#: inc/class.zurcf7.php:122
+msgid "No Registered User found in Trash"
+msgstr ""
+
+#: inc/class.zurcf7.php:126
+msgid "CF7 User Registration"
+msgstr ""
+
+#: inc/class.zurcf7.php:165
+msgid "<p><strong><a href=\"https://wordpress.org/plugins/contact-form-7/\" target=\"_blank\">Contact Form 7</a></strong> is required to use <strong>%s</strong>.</p>"
+msgstr ""
+
+#: inc/class.zurcf7.php:272
+msgid "Settings"
+msgstr ""
+
+#: inc/class.zurcf7.php:273
+msgid "Support"
+msgstr ""
+
+#: inc/class.zurcf7.php:274
+msgid "Document"
+msgstr ""
+
+#: inc/admin/class.zurcf7.admin.php:55
+msgid "Settings"
+msgstr ""
+
+#: inc/admin/class.zurcf7.admin.php:228
+msgid "Nonce issue.. Please try again."
+msgstr ""
+
+#: inc/admin/class.zurcf7.admin.action.php:56
+msgid "Access denied"
+msgstr ""
+
+#: inc/admin/class.zurcf7.admin.action.php:102
+msgid "Registration Form Data"
+msgstr ""
+
+#: inc/admin/class.zurcf7.admin.action.php:130
+msgid "CF7 Form Name"
+msgstr ""
+
+#: inc/admin/class.zurcf7.admin.action.php:137
+msgid "User Email"
+msgstr ""
+
+#: inc/admin/class.zurcf7.admin.action.php:144
+msgid "User Name"
+msgstr ""
+
+#: inc/admin/class.zurcf7.admin.action.php:150
+msgid "User Role"
+msgstr ""
+
+#: inc/admin/class.zurcf7.admin.action.php:157
+msgid "Type"
+msgstr ""
+
+#: inc/admin/class.zurcf7.admin.action.php:227
+msgid "Type"
+msgstr ""
+
+#: inc/admin/class.zurcf7.admin.filter.php:67
+msgid "User Name"
+msgstr ""
+
+#: inc/admin/class.zurcf7.admin.filter.php:68
+msgid "User Role"
+msgstr ""
+
+#: inc/admin/class.zurcf7.admin.filter.php:69
+msgid "Date"
+msgstr ""
+
+#: inc/admin/class.zurcf7.admin.filter.php:99
+msgid "View"
+msgstr ""
+
+#: inc/front/class.zurcf7.front.action.php:168
+msgid "Username: %s"
+msgstr ""
+
+#: inc/front/class.zurcf7.front.action.php:169
+msgid "Password: %s"
+msgstr ""
+
+#: inc/front/class.zurcf7.front.action.php:171
+msgid "[%s] Your username and password"
+msgstr ""
+
+#: inc/front/class.zurcf7.front.action.php:279
+msgid "You are registered successfully."
+msgstr ""
+
+#: inc/lib/class.zurcf7.fb.signup.php:59
+msgid "Facebook Signup"
+msgstr ""
+
+#: inc/lib/class.zurcf7.fb.signup.php:74
+msgid "Generate a form-tag for to display Facebook Signup form"
+msgstr ""
+
+#: inc/lib/class.zurcf7.fb.signup.php:82
+msgid "Name"
+msgstr ""
+
+#: inc/lib/class.zurcf7.fb.signup.php:94
+msgid "Insert Tag"
+msgstr ""
+
+#: inc/lib/class.zurcf7.fb.signup.php:281
+msgid "Username: %s"
+msgstr ""
+
+#: inc/lib/class.zurcf7.fb.signup.php:282
+msgid "Password: %s"
+msgstr ""
+
+#: inc/lib/class.zurcf7.fb.signup.php:284
+msgid "[%s] Your username and password"
+msgstr ""
+

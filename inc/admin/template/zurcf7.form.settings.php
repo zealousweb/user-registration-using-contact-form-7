@@ -30,8 +30,8 @@
       <td>
         <select id="zurcf7_formid" name="zurcf7_formid">
         <option value=""><?php echo esc_html__( 'Select form', 'user-registration-using-contact-form-7' ); ?></option>
-        <?php foreach($cf7forms as $cf7form){?>
-          <option value="<?php echo esc_attr( $cf7form->ID ); ?>" <?php echo selected( $zurcf7_formid, $cf7form->ID, false ); ?>><?php echo esc_html( $cf7form->post_title ); ?></option>
+        <?php foreach($cf7forms as $zurcf7_cf7form){?>
+          <option value="<?php echo esc_attr( $zurcf7_cf7form->ID ); ?>" <?php echo selected( $zurcf7_formid, $zurcf7_cf7form->ID, false ); ?>><?php echo esc_html( $zurcf7_cf7form->post_title ); ?></option>
         <?php } ?>
         </select>
       </td>
@@ -72,11 +72,11 @@
 
     
 
-    <?php $editable_roles = get_editable_roles();
-    foreach ($editable_roles as $role => $details) {  //phpcs:ignore
-        $sub['role'] = esc_attr($role);
-        $sub['name'] = translate_user_role($details['name']);
-        $roles[] = $sub;
+    <?php $zurcf7_editable_roles = get_editable_roles();
+    foreach ($zurcf7_editable_roles as $role => $details) {  //phpcs:ignore
+        $zurcf7_sub['role'] = esc_attr($role);
+        $zurcf7_sub['name'] = translate_user_role($details['name']);
+        $zurcf7_roles[] = $zurcf7_sub;
     }?>
     <tr>
       <th scope="row">
@@ -85,11 +85,11 @@
       </th>
       <td>
         <select id="zurcf7_userrole_field" name="zurcf7_userrole_field" class="">
-        <?php if(!empty($editable_roles)){?>
+        <?php if(!empty($zurcf7_editable_roles)){?>
             <option value=""><?php echo esc_html__( 'Select Role', 'user-registration-using-contact-form-7' ); ?></option>
             <?php 
-            foreach($editable_roles as $role => $details){ //phpcs:ignore ?> 
-              <option value="<?php echo esc_attr($role);?>" <?php echo selected( $zurcf7_userrole_field, $role, false );?>><?php echo esc_html__( translate_user_role($details['name']), 'user-registration-using-contact-form-7' ); ?></option>
+            foreach($zurcf7_editable_roles as $role => $details){ //phpcs:ignore ?>
+              <option value="<?php echo esc_attr($role);?>" <?php echo selected( $zurcf7_userrole_field, $role, false );?>><?php echo esc_html( translate_user_role($details['name']) ); ?></option>
             <?php }
             }else{?>
             <option value=""><?php echo esc_html__( 'No Role found', 'user-registration-using-contact-form-7' ); ?></option>
@@ -109,7 +109,7 @@
           <?php if(!empty($tags)){?>
             <option value=""><?php echo esc_html__( 'Select field', 'user-registration-using-contact-form-7' ); ?></option>
             <?php foreach($tags as $tag){ //phpcs:ignore?>
-              <option value="<?php echo esc_attr($tag);?>" <?php echo selected( $zurcf7_email_field, $tag, false );?>>[<?php echo esc_html__( $tag, 'user-registration-using-contact-form-7' ); ?>]</option>
+              <option value="<?php echo esc_attr($tag);?>" <?php echo selected( $zurcf7_email_field, $tag, false );?>>[<?php echo esc_html( $tag ); ?>]</option>
             <?php }
             }else{?>
             <option value=""><?php echo esc_html__( 'No tag found', 'user-registration-using-contact-form-7' ); ?></option>
@@ -130,7 +130,7 @@
             <option value=""><?php echo esc_html__( 'Select field', 'user-registration-using-contact-form-7' ); ?></option>
             <?php 
             foreach($tags as $tag){ //phpcs:ignore ?>
-              <option value="<?php echo esc_attr($tag);?>" <?php echo selected( $zurcf7_username_field, $tag, false );?>>[<?php echo esc_html__( $tag, 'user-registration-using-contact-form-7' ); ?>]</option>
+              <option value="<?php echo esc_attr($tag);?>" <?php echo selected( $zurcf7_username_field, $tag, false );?>>[<?php echo esc_html( $tag ); ?>]</option>
             <?php }
             }else{?>
             <option value=""><?php echo esc_html__( 'No tag found', 'user-registration-using-contact-form-7' ); ?></option>
@@ -149,7 +149,7 @@
         <select id="zurcf7_successurl_field" name="zurcf7_successurl_field">
           <option value=""><?php echo esc_html__( 'Select Page', 'user-registration-using-contact-form-7' ); ?></option>
           <?php foreach($pages as $page){ //phpcs:ignore?>
-            <option value="<?php echo esc_attr($page->ID);?>" <?php echo selected( $zurcf7_successurl_field, $page->ID, false );?>><?php echo esc_html__( $page->post_title, 'user-registration-using-contact-form-7' ); ?></option>
+            <option value="<?php echo esc_attr($page->ID);?>" <?php echo selected( $zurcf7_successurl_field, $page->ID, false );?>><?php echo esc_html( $page->post_title ); ?></option>
           <?php }?>          
         </select>        
       </td>

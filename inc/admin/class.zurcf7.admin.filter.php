@@ -84,7 +84,10 @@ if ( !class_exists( 'ZURCF7_Admin_Filter' ) ) {
 		 */
 		function filter__zurcf7_remove_actions_links( $actions, $post ){
 			
-			if (isset($_GET['post_type']) && ($_GET['post_type'] === ZURCF7_POST_TYPE)) {
+			// Sanitize and verify GET parameter
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Display check, not form processing
+			$post_type = isset( $_GET['post_type'] ) ? sanitize_text_field( wp_unslash( $_GET['post_type'] ) ) : '';
+			if ( $post_type === ZURCF7_POST_TYPE ) {
 				unset($actions['inline hide-if-no-js']);
 				unset($actions['trash']);
 				

@@ -20,7 +20,7 @@
 <table class="form-table" id="form-settings">
 	<tbody>
   		<?php if ( is_plugin_active( 'advanced-custom-fields/acf.php' ) || is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) { 
-			$returnfieldarr = zurcf7_ACF_filter_array_function(); ?>
+			$zurcf7_returnfieldarr = zurcf7_ACF_filter_array_function(); ?>
 				<tr>
 					<td>
 						<?php echo esc_html__('ACF Field Mapping ','user-registration-using-contact-form-7'); ?><span class="zwt-zurcf7-tooltip" id="zurcf7_acf_field_mapping"></span>
@@ -32,34 +32,34 @@
 					</td>
 				</tr>
 				<?php 
-				if(!empty($returnfieldarr) || $returnfieldarr['message'] !== '0') { 
-					$count = 0;
-					foreach ($returnfieldarr['response'] as $value) { 
-						if(!empty($value['field_name'])){
-							$field_name= $value['field_name'];
+				if(!empty($zurcf7_returnfieldarr) || $zurcf7_returnfieldarr['message'] !== '0') { 
+					$zurcf7_count = 0;
+					foreach ($zurcf7_returnfieldarr['response'] as $zurcf7_value) { 
+						if(!empty($zurcf7_value['field_name'])){
+							$zurcf7_field_name= $zurcf7_value['field_name'];
 							if(isset($_POST['zurcf7_formid'])){  //phpcs:ignore
 								$zurcf7_formid = $_POST['zurcf7_formid']; //phpcs:ignore
 							}
-							$field_name = $value['field_name'];
-							$field_label = $value['field_label'];
-							if($count != 3) { ?>
+							$zurcf7_field_name = $zurcf7_value['field_name'];
+							$zurcf7_field_label = $zurcf7_value['field_label'];
+							if($zurcf7_count != 3) { ?>
 							<tr>
 								<th scope="row">
-									<label for="zurcf7_ACF_field"><?php echo esc_html__($field_label.'', 'user-registration-using-contact-form-7' ); ?></label>
+									<label for="zurcf7_ACF_field"><?php echo esc_html( $zurcf7_field_label ); ?></label>
 								</th>
 								<td>
-									<select id="zurcf7_ACF_field_<?php echo esc_html($count); ?>" name="<?php echo esc_attr($field_name); ?>" class="zurcf7_alltag zurcf7_ACF_field.<?php echo esc_attr($field_name); ?>">	
+									<select id="zurcf7_ACF_field_<?php echo esc_html($zurcf7_count); ?>" name="<?php echo esc_attr($zurcf7_field_name); ?>" class="zurcf7_alltag zurcf7_ACF_field.<?php echo esc_attr($zurcf7_field_name); ?>">	
 											<option value=""><?php echo esc_html__( 'Select field', 'user-registration-using-contact-form-7' ); ?></option>
 											<?php 
 											if(!empty($tags)){ ?>
 												<?php foreach($tags as $tag){ //phpcs:ignore
-													$selected = '';
-													$checked_val =  (get_option($field_name)) ? get_option($field_name) : "";
-													if($checked_val == $tag){ 
-														$selected='selected';
+													$zurcf7_selected = '';
+													$zurcf7_checked_val =  (get_option($zurcf7_field_name)) ? get_option($zurcf7_field_name) : "";
+													if($zurcf7_checked_val == $tag){ 
+														$zurcf7_selected='selected';
 													}	
 												?>
-													<option value="<?php echo esc_attr( $tag ); ?>" <?php echo esc_attr( $selected ); ?>>[<?php echo esc_html( $tag ); ?>]</option>
+													<option value="<?php echo esc_attr( $tag ); ?>" <?php echo esc_attr( $zurcf7_selected ); ?>>[<?php echo esc_html( $tag ); ?>]</option>
 												<?php }
 											}else{ ?>
 												<option value=""><?php echo esc_html__( 'No tag found', 'user-registration-using-contact-form-7' ); ?></option>
@@ -74,13 +74,13 @@
 						 	</tr>
 						 <?php }
 						}
-						 $count++;
+						 $zurcf7_count++;
 					} ?>
 				
 			<?php 
 			}else{
-				if(!empty($returnfieldarr['message']) == '0'){
-					echo esc_html__($message,'user-registration-using-contact-form-7');
+				if(!empty($zurcf7_returnfieldarr['message']) == '0'){
+					echo esc_html( $message );
 				}
 			} ?>
 		</div>

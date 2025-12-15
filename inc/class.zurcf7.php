@@ -60,6 +60,7 @@ if ( !class_exists( 'ZURCF7' ) ) {
 			if ( !is_plugin_active( 'contact-form-7/wp-contact-form-7.php' ) ) {
 				add_action( 'admin_notices', array( $this, 'action__zurcf7_admin_notices_deactive' ) );
 				deactivate_plugins( ZURCF7_PLUGIN_BASENAME );
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- URL cleanup, not form processing
 				if ( isset( $_GET['activate'] ) ) {
 					unset( $_GET['activate'] );
 				}
@@ -82,7 +83,7 @@ if ( !class_exists( 'ZURCF7' ) ) {
 			}
 
 			# Traditional WordPress plugin locale filter
-			$locale = apply_filters( 'plugin_locale',  $get_locale, 'user-registration-using-contact-form-7' );
+			$locale = apply_filters( 'zurcf7_plugin_locale',  $get_locale, 'user-registration-using-contact-form-7' );
 			$mofile = sprintf( '%1$s-%2$s.mo', 'user-registration-using-contact-form-7', $locale );
 
 			# Setup paths to current locale file
@@ -238,12 +239,12 @@ if ( !class_exists( 'ZURCF7' ) ) {
 
 				}else{
 					//all the form tags without selected value
-					$res = array('response' =>'success', 'is_exists' => 'no', 'formtag' => __( $html, 'user-registration-using-contact-form-7' ) );
+					$res = array('response' =>'success', 'is_exists' => 'no', 'formtag' => $html );
 				}
 			}else{
 				//No tag found
 				$html = '<option value="">No tag found</option>';
-				$res = array('response' =>'error', 'formtag' => __( $html, 'user-registration-using-contact-form-7' ));
+				$res = array('response' =>'error', 'formtag' => $html);
 			}
 			
 			wp_send_json($res);

@@ -65,7 +65,7 @@ if ( !class_exists( 'ZURCF7_Front_Action' ) ){
 		 *
 		 */
 		function action__wp_enqueue_scripts() {
-			wp_enqueue_script( ZURCF7_PREFIX . '_front_js', ZURCF7_URL . 'assets/js/front.min.js', array( 'jquery-core' ), ZURCF7_VERSION );
+			wp_enqueue_script( ZURCF7_PREFIX . '_front_js', ZURCF7_URL . 'assets/js/front.min.js', array( 'jquery-core' ), ZURCF7_VERSION, true );
 
 			// Localize the script with new data
 			$zurcf7_successurl_field = get_option( 'zurcf7_successurl_field');
@@ -165,9 +165,12 @@ if ( !class_exists( 'ZURCF7_Front_Action' ) ){
 									// Email login details to user
 									$blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
 									$message = "Welcome! Your login details are as follows:" . "\r\n";
+									// translators: %s: User's email address used as username
 									$message .= sprintf(__('Username: %s', 'user-registration-using-contact-form-7'), $user_email) . "\r\n";
+									// translators: %s: User's password
 									$message .= sprintf(__('Password: %s', 'user-registration-using-contact-form-7'), $user_pwd) . "\r\n";
 									$message .= $login_url . "\r\n";
+									// translators: %s: Site name
 									wp_mail($user_email, sprintf(__('[%s] Your username and password', 'user-registration-using-contact-form-7'), $blogname), $message);
 								}
 

@@ -19,12 +19,16 @@ wp_enqueue_style( 'wp-pointer' );
       <button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php echo esc_html__( 'Please fill all mandatory fields..', 'user-registration-using-contact-form-7' ); ?></span></button>
   </div>
   <form id="setting-form" method="post">
-    <?php if(isset($_REQUEST['setting_zurcf7_submit']) ){?>
+    <?php 
+    // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Display check only, actual processing verified in class.zurcf7.admin.php
+    if(isset($_REQUEST['setting_zurcf7_submit']) ){?>
     <div class="notice notice-success is-dismissible">
         <p><?php echo esc_html__( 'Settings saved successfully !', 'user-registration-using-contact-form-7' );?></p>
     </div>
     <?php }?>
-    <?php if(isset($_REQUEST['setting_reset']) ){?>
+    <?php 
+    // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Display check only, actual processing verified in class.zurcf7.admin.php
+    if(isset($_REQUEST['setting_reset']) ){?>
     <div class="notice notice-success is-dismissible">
         <p><?php echo esc_html__( 'Settings are reset successfully !', 'user-registration-using-contact-form-7' );?></p>
     </div>
