@@ -154,7 +154,7 @@ if ( !class_exists( 'ZURCF7_Front_Action' ) ){
 							if ( is_wp_error( $user_id  ) ) {
 								//if there is any error abort the current process
 								$abort = true;
-								$object->set_response($user_id->get_error_message(),'zeal-user-reg-cf7');
+								$object->set_response($user_id->get_error_message(),'user-registration-using-contact-form-7');
 								$this->zurcf7_custom_logs($user_id->get_error_message());
 							}else{
 
@@ -165,10 +165,10 @@ if ( !class_exists( 'ZURCF7_Front_Action' ) ){
 									// Email login details to user
 									$blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
 									$message = "Welcome! Your login details are as follows:" . "\r\n";
-									$message .= sprintf(__('Username: %s'), $user_email) . "\r\n";
-									$message .= sprintf(__('Password: %s'), $user_pwd) . "\r\n";
+									$message .= sprintf(__('Username: %s', 'user-registration-using-contact-form-7'), $user_email) . "\r\n";
+									$message .= sprintf(__('Password: %s', 'user-registration-using-contact-form-7'), $user_pwd) . "\r\n";
 									$message .= $login_url . "\r\n";
-									wp_mail($user_email, sprintf(__('[%s] Your username and password'), $blogname), $message);
+									wp_mail($user_email, sprintf(__('[%s] Your username and password', 'user-registration-using-contact-form-7'), $blogname), $message);
 								}
 
 
@@ -193,14 +193,14 @@ if ( !class_exists( 'ZURCF7_Front_Action' ) ){
 						}else{
 							//Email id already exists
 							$abort = true;
-							$object->set_response("This user already exists. Please enter another email.",'zeal-user-reg-cf7');
+							$object->set_response("This user already exists. Please enter another email.",'user-registration-using-contact-form-7');
 							$this->zurcf7_custom_logs("This user already exists. Please enter another email");
 						}
 					}
 				}else{
 					//Email id already exists
 					$abort = true;
-					$object->set_response("Please enter valid email. Or contact administrator for the same.",'zeal-user-reg-cf7');
+					$object->set_response("Please enter valid email. Or contact administrator for the same.",'user-registration-using-contact-form-7');
 					$this->zurcf7_custom_logs("Invalid email :".$user_email);
 				}
 			}
@@ -276,7 +276,7 @@ if ( !class_exists( 'ZURCF7_Front_Action' ) ){
 			) {
 				$redirection_url = isset( $_SESSION[ ZURCF7_META_PREFIX . 'user_registered' . $result[ 'contact_form_id' ] ] ) ? $_SESSION[ ZURCF7_META_PREFIX . 'user_registered' . $result[ 'contact_form_id' ] ] : '';   //phpcs:ignore
 				$response[ 'redirection_url' ] = $redirection_url;
-				$response[ 'message' ] = __( 'You are registered successfully.', 'zeal-user-reg-cf7' );
+				$response[ 'message' ] = __( 'You are registered successfully.', 'user-registration-using-contact-form-7' );
 				unset( $_SESSION[ ZURCF7_META_PREFIX . 'user_registered' . $result[ 'contact_form_id' ] ] );   //phpcs:ignore
 			}
 			return $response;

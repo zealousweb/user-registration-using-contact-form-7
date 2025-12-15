@@ -52,8 +52,8 @@ if ( !class_exists( 'ZURCF7_Admin' ) ) {
 			if( current_user_can( 'administrator' ) ){
 				add_submenu_page(
 					'edit.php?post_type='.ZURCF7_POST_TYPE,
-					__( 'Settings', 'zeal-user-reg-cf7' ),
-					__( 'Settings', 'zeal-user-reg-cf7' ),
+					__( 'Settings', 'user-registration-using-contact-form-7' ),
+					__( 'Settings', 'user-registration-using-contact-form-7' ),
 					'manage_options',
 					self::$setting_submenu,
 					array( $this, 'zurcf7_setting_page' )
@@ -225,7 +225,7 @@ if ( !class_exists( 'ZURCF7_Admin' ) ) {
 		function action__admin_notices_zurcf7_nonce_issue(){
 			echo '<div class="error">' .
 				sprintf(
-					esc_html__( '<p>Nonce issue.. Please try again.</p>', 'zeal-user-reg-cf7' ),
+					esc_html__( '<p>Nonce issue.. Please try again.</p>', 'user-registration-using-contact-form-7' ),
 					'User Registration Using Contact Form 7'
 				) .
 			'</div>';

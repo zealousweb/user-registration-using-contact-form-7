@@ -156,7 +156,7 @@
 
 (function() {
     //Hide notification
-    document.getElementById('zeal-user-reg-cf7').style.display = 'none';
+    document.getElementById('user-registration-using-contact-form-7').style.display = 'none';
     //form selection
     var $selectFormDropDown = document.getElementById("zurcf7_formid");
     $selectFormDropDown.addEventListener('change', function(event) {
@@ -232,7 +232,7 @@ document.getElementById("setting_zurcf7_submit").onclick = function(event) {
 
     //Main condition
     if ($flag == false) {
-        document.getElementById('zeal-user-reg-cf7').style.display = 'block';
+        document.getElementById('user-registration-using-contact-form-7').style.display = 'block';
         window.scrollTo({ top: 0, behavior: 'smooth', });
         event.preventDefault();
     }

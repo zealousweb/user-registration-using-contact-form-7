@@ -82,18 +82,18 @@ if ( !class_exists( 'ZURCF7' ) ) {
 			}
 
 			# Traditional WordPress plugin locale filter
-			$locale = apply_filters( 'plugin_locale',  $get_locale, 'plugin-text-domain' );
-			$mofile = sprintf( '%1$s-%2$s.mo', 'plugin-text-domain', $locale );
+			$locale = apply_filters( 'plugin_locale',  $get_locale, 'user-registration-using-contact-form-7' );
+			$mofile = sprintf( '%1$s-%2$s.mo', 'user-registration-using-contact-form-7', $locale );
 
 			# Setup paths to current locale file
 			$mofile_global = WP_LANG_DIR . '/plugins/' . basename( ZURCF7_DIR ) . '/' . $mofile;
 
 			if ( file_exists( $mofile_global ) ) {
 				# Look in global /wp-content/languages/plugin-name folder
-				load_textdomain( 'plugin-text-domain', $mofile_global );
+				load_textdomain( 'user-registration-using-contact-form-7', $mofile_global );
 			} else {
 				# Load the default language files
-				load_plugin_textdomain( 'plugin-text-domain', false, $ZURCF7_lang_dir );
+				load_plugin_textdomain( 'user-registration-using-contact-form-7', false, $ZURCF7_lang_dir );
 			}
 		}
 
@@ -112,18 +112,18 @@ if ( !class_exists( 'ZURCF7' ) ) {
 
 			# Post Type: Here you add your post type
 			$labels = array(
-				'name' => __( 'CF7 User Registration ', 'zeal-user-reg-cf7' ),
-				'singular_name' => __( 'Registered User', 'zeal-user-reg-cf7' ),
-				'all_items' => __( 'All Registered Users', 'zeal-user-reg-cf7' ),
-				'edit_item' => __( 'Registered User Detail', 'zeal-user-reg-cf7' ),
-				'search_items' => __( 'Search Registered User', 'zeal-user-reg-cf7' ),
-				'view_item' => __( 'View Registered User', 'zeal-user-reg-cf7' ),
-				'not_found' => __( 'No Registered User found', 'zeal-user-reg-cf7' ),
-				'not_found_in_trash' => __( 'No Registered User found in Trash', 'zeal-user-reg-cf7' ),
+				'name' => __( 'CF7 User Registration ', 'user-registration-using-contact-form-7' ),
+				'singular_name' => __( 'Registered User', 'user-registration-using-contact-form-7' ),
+				'all_items' => __( 'All Registered Users', 'user-registration-using-contact-form-7' ),
+				'edit_item' => __( 'Registered User Detail', 'user-registration-using-contact-form-7' ),
+				'search_items' => __( 'Search Registered User', 'user-registration-using-contact-form-7' ),
+				'view_item' => __( 'View Registered User', 'user-registration-using-contact-form-7' ),
+				'not_found' => __( 'No Registered User found', 'user-registration-using-contact-form-7' ),
+				'not_found_in_trash' => __( 'No Registered User found in Trash', 'user-registration-using-contact-form-7' ),
 			);
 
 			$args = array(
-				'label' => __( 'CF7 User Registration', 'zeal-user-reg-cf7' ),
+				'label' => __( 'CF7 User Registration', 'user-registration-using-contact-form-7' ),
 				'labels' => $labels,
 				'description' => '',
 				'public' => false,
@@ -162,7 +162,7 @@ if ( !class_exists( 'ZURCF7' ) ) {
 		function action__zurcf7_admin_notices_deactive() {
 			echo '<div class="error">' .
 					sprintf(
-						__( '<p><strong><a href="https://wordpress.org/plugins/contact-form-7/" target="_blank">Contact Form 7</a></strong> is required to use <strong>%s</strong>.</p>', 'zeal-user-reg-cf7' ), //phpcs:ignore
+						__( '<p><strong><a href="https://wordpress.org/plugins/contact-form-7/" target="_blank">Contact Form 7</a></strong> is required to use <strong>%s</strong>.</p>', 'user-registration-using-contact-form-7' ), //phpcs:ignore
 						'User Registration using Contact Form 7'
 					) .
 				'</div>';
@@ -238,12 +238,12 @@ if ( !class_exists( 'ZURCF7' ) ) {
 
 				}else{
 					//all the form tags without selected value
-					$res = array('response' =>'success', 'is_exists' => 'no', 'formtag' => __( $html, 'zeal-user-reg-cf7' ) );
+					$res = array('response' =>'success', 'is_exists' => 'no', 'formtag' => __( $html, 'user-registration-using-contact-form-7' ) );
 				}
 			}else{
 				//No tag found
 				$html = '<option value="">No tag found</option>';
-				$res = array('response' =>'error', 'formtag' => __( $html, 'zeal-user-reg-cf7' ));
+				$res = array('response' =>'error', 'formtag' => __( $html, 'user-registration-using-contact-form-7' ));
 			}
 			
 			wp_send_json($res);
@@ -269,9 +269,9 @@ if ( !class_exists( 'ZURCF7' ) ) {
 			if ( is_plugin_active( 'user-registration-cf7/user-registration-cf7.php' ) )
 			{
 				
-				$settings_link =  '<a href="'.admin_url('edit.php?post_type='.ZURCF7_POST_TYPE.'&page=zurcf7_settings', $scheme = 'admin' ).'">'.__( 'Settings', 'zeal-user-reg-cf7' ).'</a>';
-				$support_link = '<a href="#" target="_blank">' .__( 'Support', 'zeal-user-reg-cf7' ). '</a>';
-				$document_link = '<a href="#" target="_blank">' .__( 'Document', 'zeal-user-reg-cf7' ). '</a>';
+				$settings_link =  '<a href="'.admin_url('edit.php?post_type='.ZURCF7_POST_TYPE.'&page=zurcf7_settings', $scheme = 'admin' ).'">'.__( 'Settings', 'user-registration-using-contact-form-7' ).'</a>';
+				$support_link = '<a href="#" target="_blank">' .__( 'Support', 'user-registration-using-contact-form-7' ). '</a>';
+				$document_link = '<a href="#" target="_blank">' .__( 'Document', 'user-registration-using-contact-form-7' ). '</a>';
 
 				array_unshift( $links, $settings_link );
 				array_unshift( $links, $support_link );

@@ -64,9 +64,9 @@ if ( !class_exists( 'ZURCF7_Admin_Filter' ) ) {
 		 */
 		function filter__zurcf7_manage_data_posts_columns( $columns ) {
 			unset( $columns['date'] );
-			$columns[ZURCF7_META_PREFIX.'user_login'] = 			__( 'User Name', 'zeal-user-reg-cf7' );
-			$columns[ZURCF7_META_PREFIX.'role'] = 				__( 'User Role', 'zeal-user-reg-cf7' );
-			$columns['date'] = 					__( 'Date', 'zeal-user-reg-cf7' );
+			$columns[ZURCF7_META_PREFIX.'user_login'] = 			__( 'User Name', 'user-registration-using-contact-form-7' );
+			$columns[ZURCF7_META_PREFIX.'role'] = 				__( 'User Role', 'user-registration-using-contact-form-7' );
+			$columns['date'] = 					__( 'Date', 'user-registration-using-contact-form-7' );
 			return $columns;
 		}
 
@@ -96,7 +96,7 @@ if ( !class_exists( 'ZURCF7_Admin_Filter' ) ) {
 				$actions = array(
 					'edit' => sprintf( '<a href="%1$s">%2$s</a>',
 					esc_url( $edit_link ),
-					esc_html( __( 'View', 'zeal-user-reg-cf7' ) ) )
+					esc_html( __( 'View', 'user-registration-using-contact-form-7' ) ) )
 				);
 			}
 

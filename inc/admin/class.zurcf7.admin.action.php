@@ -53,7 +53,7 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 			if(!in_array('administrator',$roles)){
 				remove_menu_page('edit.php?post_type='.ZURCF7_POST_TYPE); // Pages
 				if( isset($_GET['post_type']) && (ZURCF7_POST_TYPE ===  $_GET['post_type']) ){
-                    wp_die(esc_html__("Access denied", 'ZURCF7_TEXT_DOMAIN'));
+                    wp_die(esc_html__("Access denied", 'user-registration-using-contact-form-7'));
 				}
 			}
 			if( isset($_GET['post_type']) && (ZURCF7_POST_TYPE ===  $_GET['post_type']) ){
@@ -63,27 +63,27 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 				// Localize the script with new data
 				$translation_array = array(
 					'zurcf7_formid_msg' => __( '<h3>Select Registration Form</h3>' .
-								'<p>Select the Form for User Registration.</p>', 'zeal-user-reg-cf7' ),
+								'<p>Select the Form for User Registration.</p>', 'user-registration-using-contact-form-7' ),
 					'zurcf7_skipcf7_email_msg' => __( '<h3>Skip Contact Form 7 Email</h3>' .
-								'<p>Tick the checkbox to skip default contact form 7 email.</p>', 'zeal-user-reg-cf7' ),
+								'<p>Tick the checkbox to skip default contact form 7 email.</p>', 'user-registration-using-contact-form-7' ),
 					'zurcf7_enable_sent_login_url' => __( '<h3>Enable sent Login URL in Mail</h3>' .
-								'<p>Enable sent Login URL in Mail.</p>', 'zeal-user-reg-cf7' ),
+								'<p>Enable sent Login URL in Mail.</p>', 'user-registration-using-contact-form-7' ),
 					'zurcf7_debug_mode_status_msg' => __( '<h3>Enable Debug Mode</h3>' .
-								'<p>Tick the checkbox to enable debug mode for generating logs.</p>', 'zeal-user-reg-cf7' ),
+								'<p>Tick the checkbox to enable debug mode for generating logs.</p>', 'user-registration-using-contact-form-7' ),
 					'zurcf7_email_field_msg' => __( '<h3>Select Email Field</h3>' .
-								'<p>Select the field name for User Email Address.</p>', 'zeal-user-reg-cf7' ),
+								'<p>Select the field name for User Email Address.</p>', 'user-registration-using-contact-form-7' ),
 					'zurcf7_username_field_msg' => __( '<h3>Select Username Field</h3>' .
-								'<p>Select the field name for Username.</p>', 'zeal-user-reg-cf7' ),
+								'<p>Select the field name for Username.</p>', 'user-registration-using-contact-form-7' ),
 					'zurcf7_userrole_field_msg' => __( '<h3>Select User Role Field</h3>' .
-								'<p>Select the User Role for user registration.</p>', 'zeal-user-reg-cf7' ),
+								'<p>Select the User Role for user registration.</p>', 'user-registration-using-contact-form-7' ),
 					'zurcf7_successurl_field_msg' => __( '<h3>Select Success URL</h3>' .
-								'<p>Select the page for user redirection after the registration process is complete.</p>', 'zeal-user-reg-cf7' ),
+								'<p>Select the page for user redirection after the registration process is complete.</p>', 'user-registration-using-contact-form-7' ),
 					'zurcf7_acf_field_mapping' => __( '<h3>ACF Plugin Required</h3>' .
-								'<p>ACF Plugin is required for ACF Field Mapping</p>', 'zeal-user-reg-cf7' ),
+								'<p>ACF Plugin is required for ACF Field Mapping</p>', 'user-registration-using-contact-form-7' ),
 					'zurcf7_fb_signup_app_id_tool' => __( '<h3>App Id</h3>' .
-								'<p>Please enter app id.</p>', 'zeal-user-reg-cf7' ),
+								'<p>Please enter app id.</p>', 'user-registration-using-contact-form-7' ),
 					'zurcf7_fb_app_secret_tool' => __( '<h3>App Secret</h3>' .
-								'<p>Please enter app secret.</p>', 'zeal-user-reg-cf7' ),
+								'<p>Please enter app secret.</p>', 'user-registration-using-contact-form-7' ),
 					
 				);
 
@@ -99,7 +99,7 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 		 * - Add meta boxes for the CPT "zurcf7_data"
 		 */
 		function action__add_meta_boxes() {
-			add_meta_box( 'zurcf7-data', __( 'Registration Form Data', 'zeal-user-reg-cf7' ), array( $this, 'zurcf7_show_from_data' ), ZURCF7_POST_TYPE, 'normal', 'high' );
+			add_meta_box( 'zurcf7-data', __( 'Registration Form Data', 'user-registration-using-contact-form-7' ), array( $this, 'zurcf7_show_from_data' ), ZURCF7_POST_TYPE, 'normal', 'high' );
 		}
 
 		/**
@@ -127,34 +127,34 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 
 			echo '<tr class="form-field">' .
 				'<th scope="row">' .
-					'<label for="hcf_author">' . esc_html__( 'CF7 Form Name', 'zeal-user-reg-cf7' ) . '</label>' .
+					'<label for="hcf_author">' . esc_html__( 'CF7 Form Name', 'user-registration-using-contact-form-7' ) . '</label>' .
 				'</th>' .
 				'<td>'.esc_html($form_title).'</td>' .
 			'</tr>';
 
 			echo '<tr class="form-field">' .
 				'<th scope="row">' .
-					'<label for="hcf_author">' . esc_html__( 'User Email', 'zeal-user-reg-cf7' ) . '</label>' .
+					'<label for="hcf_author">' . esc_html__( 'User Email', 'user-registration-using-contact-form-7' ) . '</label>' .
 				'</th>' .
 				'<td>'.esc_html($user_email).'</td>' .
 			'</tr>';
 
 			echo '<tr class="form-field">' .
 				'<th scope="row">' .
-					'<label for="hcf_author">' . esc_html__( 'User Name', 'zeal-user-reg-cf7' ) . '</label>' .
+					'<label for="hcf_author">' . esc_html__( 'User Name', 'user-registration-using-contact-form-7' ) . '</label>' .
 				'</th>' .
 				'<td>'.esc_html($user_login).'</td>' .
 			'</tr>';
 			echo '<tr class="form-field">' .
 				'<th scope="row">' .
-					'<label for="hcf_author">' . esc_html__( 'User Role', 'zeal-user-reg-cf7' ) . '</label>' .
+					'<label for="hcf_author">' . esc_html__( 'User Role', 'user-registration-using-contact-form-7' ) . '</label>' .
 				'</th>' .
 				'<td>'.esc_html(ucfirst($user_role)).'</td>' .
 			'</tr>';
 			if( !empty( $social_type ) ) {
 				echo '<tr class="form-field">' .
 					'<th scope="row">' .
-						'<label for="hcf_author">' . esc_html__( 'Type', 'zeal-user-reg-cf7' ) . '</label>' .
+						'<label for="hcf_author">' . esc_html__( 'Type', 'user-registration-using-contact-form-7' ) . '</label>' .
 					'</th>' .
 					'<td>'.esc_html($social_type).'</td>' .
 				'</tr>';
@@ -224,7 +224,7 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 			if(!empty($social_type)) { ?>
 				<table class="form-table">
 					<tr>
-						<th><label for="type"><?php _e("Type"); ?></label></th>
+						<th><label for="type"><?php _e("Type", 'user-registration-using-contact-form-7'); ?></label></th>
 						<td>
 							<span class="description"><?php echo esc_html($social_type); ?></span>
 						</td>

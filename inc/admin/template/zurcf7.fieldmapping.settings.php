@@ -11,7 +11,7 @@
 <table class="form-table form-table-heading">
 	<tbody>
     	<tr>
-      		<th><?php echo esc_html__('ACF Field Mapping','zeal-user-reg-cf7');?> :</th>
+      		<th><?php echo esc_html__('ACF Field Mapping','user-registration-using-contact-form-7');?> :</th>
       		<td></td>
     	</tr>
   </tbody>
@@ -23,12 +23,12 @@
 			$returnfieldarr = zurcf7_ACF_filter_array_function(); ?>
 				<tr>
 					<td>
-						<?php echo esc_html__('ACF Field Mapping ','zeal-user-reg-cf7'); ?><span class="zwt-zurcf7-tooltip" id="zurcf7_acf_field_mapping"></span>
+						<?php echo esc_html__('ACF Field Mapping ','user-registration-using-contact-form-7'); ?><span class="zwt-zurcf7-tooltip" id="zurcf7_acf_field_mapping"></span>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<?php echo wp_kses_post( __('1. Supported ACF Fields: Text, Textarea, Checkbox, Radio, Select(Dropdown with multiple Select), Number, Date Picker, Email, Link, Date picker, Date Timepicker, Password.<br>2. To avoid conflict use same field name and Type while configuring & mapping ACF fields and cf7 fields.<br>3. Make sure option values are correct while configuring Dropdown, Radio, Checkbox Fields', 'zeal-user-reg-cf7') ); ?>
+						<?php echo wp_kses_post( __('1. Supported ACF Fields: Text, Textarea, Checkbox, Radio, Select(Dropdown with multiple Select), Number, Date Picker, Email, Link, Date picker, Date Timepicker, Password.<br>2. To avoid conflict use same field name and Type while configuring & mapping ACF fields and cf7 fields.<br>3. Make sure option values are correct while configuring Dropdown, Radio, Checkbox Fields', 'user-registration-using-contact-form-7') ); ?>
 					</td>
 				</tr>
 				<?php 
@@ -45,11 +45,11 @@
 							if($count != 3) { ?>
 							<tr>
 								<th scope="row">
-									<label for="zurcf7_ACF_field"><?php echo esc_html__($field_label.'', 'zeal-user-reg-cf7' ); ?></label>
+									<label for="zurcf7_ACF_field"><?php echo esc_html__($field_label.'', 'user-registration-using-contact-form-7' ); ?></label>
 								</th>
 								<td>
 									<select id="zurcf7_ACF_field_<?php echo esc_html($count); ?>" name="<?php echo esc_attr($field_name); ?>" class="zurcf7_alltag zurcf7_ACF_field.<?php echo esc_attr($field_name); ?>">	
-											<option value=""><?php echo esc_html__( 'Select field', 'zeal-user-reg-cf7' ); ?></option>
+											<option value=""><?php echo esc_html__( 'Select field', 'user-registration-using-contact-form-7' ); ?></option>
 											<?php 
 											if(!empty($tags)){ ?>
 												<?php foreach($tags as $tag){ //phpcs:ignore
@@ -62,7 +62,7 @@
 													<option value="<?php echo esc_attr( $tag ); ?>" <?php echo esc_attr( $selected ); ?>>[<?php echo esc_html( $tag ); ?>]</option>
 												<?php }
 											}else{ ?>
-												<option value=""><?php echo esc_html__( 'No tag found', 'zeal-user-reg-cf7' ); ?></option>
+												<option value=""><?php echo esc_html__( 'No tag found', 'user-registration-using-contact-form-7' ); ?></option>
 										<?php } ?>
 									</select>
 								</td>
@@ -70,7 +70,7 @@
 							<?php 
 						 }else{ ?>
 							<tr>
-								<td><?php echo esc_html__('Unlock additional fields by upgrading to the','zeal-user-reg-cf7');?> <a href="https://www.zealousweb.com/store/user-registration-using-contact-form-7-pro" target="_blank"> <?php echo esc_html__( 'Pro version', 'zeal-user-reg-cf7' ); ?></a></td>
+								<td><?php echo esc_html__('Unlock additional fields by upgrading to the','user-registration-using-contact-form-7');?> <a href="https://www.zealousweb.com/store/user-registration-using-contact-form-7-pro" target="_blank"> <?php echo esc_html__( 'Pro version', 'user-registration-using-contact-form-7' ); ?></a></td>
 						 	</tr>
 						 <?php }
 						}
@@ -80,14 +80,14 @@
 			<?php 
 			}else{
 				if(!empty($returnfieldarr['message']) == '0'){
-					echo esc_html__($message,'zeal-user-reg-cf7');
+					echo esc_html__($message,'user-registration-using-contact-form-7');
 				}
 			} ?>
 		</div>
 		<?php }else{ ?>
 			<tr>
 				<td colspan="2">
-				<?php echo esc_html__('Activate the Advanced Custom Fields (ACF) plugin to utilize these amazing feature','zeal-user-reg-cf7'); ?>
+				<?php echo esc_html__('Activate the Advanced Custom Fields (ACF) plugin to utilize these amazing feature','user-registration-using-contact-form-7'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -100,7 +100,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<?php echo esc_html__('Please note that the instructions provided here assume you have already installed the ACF plugin. If you haven`t installed it yet, you can download it from the official WordPress plugin repository or install it using the `Add New` option in the `Plugins` menu.','zeal-user-reg-cf7'); ?>
+					<?php echo esc_html__('Please note that the instructions provided here assume you have already installed the ACF plugin. If you haven`t installed it yet, you can download it from the official WordPress plugin repository or install it using the `Add New` option in the `Plugins` menu.','user-registration-using-contact-form-7'); ?>
 				</td>
 			</tr>
 	<?php } ?>

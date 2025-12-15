@@ -8,7 +8,7 @@
  * Author URI: https://www.zealousweb.com/
  * Developer: The ZealousWeb Team
  * Developer E-Mail: opensource@zealousweb.com
- * Text Domain: zeal-user-reg-cf7
+ * Text Domain: user-registration-using-contact-form-7
  * Domain Path: /languages
  *
  * Copyright: © 2009-2020 ZealousWeb.

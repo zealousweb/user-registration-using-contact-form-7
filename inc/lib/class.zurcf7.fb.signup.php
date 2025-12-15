@@ -56,7 +56,7 @@ if ( !class_exists( 'ZURCF7_Facebook_Signup' ) ) {
 			$tag_generator = WPCF7_TagGenerator::get_instance();
 			$tag_generator->add(
 				'facebooksignup',
-				__( 'Facebook Signup', 'facebook-sign-form' ),
+				__( 'Facebook Signup', 'user-registration-using-contact-form-7' ),
 				array( $this, 'wpcf7_tag_generator_facebook_sign' )
 			);
 		}
@@ -71,7 +71,7 @@ if ( !class_exists( 'ZURCF7_Facebook_Signup' ) ) {
 
 			$args = wp_parse_args( $args, array() );
 			$type = $args['id'];
-			$description = __( "Generate a form-tag for to display Facebook Signup form", 'facebook-sign-form' ); ?>
+			$description = __( "Generate a form-tag for to display Facebook Signup form", 'user-registration-using-contact-form-7' ); ?>
 			
 			<div class="control-box">
 				<fieldset>
@@ -79,7 +79,7 @@ if ( !class_exists( 'ZURCF7_Facebook_Signup' ) ) {
 					<table class="form-table">
 						<tbody>
 							<tr>
-							<th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-name' ); ?>"><?php echo esc_html( __( 'Name', 'facebook-sign-form' ) ); ?></label></th>
+							<th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-name' ); ?>"><?php echo esc_html( __( 'Name', 'user-registration-using-contact-form-7' ) ); ?></label></th>
 							<td>
 								<legend class="screen-reader-text"><input type="checkbox" name="required" value="on" checked="checked" /></legend>
 								<input type="text" name="name" class="tg-name oneline" id="<?php echo esc_attr( $args['content'] . '-name' ); ?>" /></td>
@@ -91,7 +91,7 @@ if ( !class_exists( 'ZURCF7_Facebook_Signup' ) ) {
 			<div class="insert-box">
 				<input type="text" name="<?php echo $type; ?>" class="tag code" readonly="readonly" onfocus="this.select()" />
 					<div class="submitbox">
-						<input type="button" class="button button-primary insert-tag" value="<?php echo esc_attr( __( 'Insert Tag', 'facebook-sign-form' ) ); ?>" />
+						<input type="button" class="button button-primary insert-tag" value="<?php echo esc_attr( __( 'Insert Tag', 'user-registration-using-contact-form-7' ) ); ?>" />
 					</div>
 				<br class="clear" />
 			</div>
@@ -278,10 +278,10 @@ if ( !class_exists( 'ZURCF7_Facebook_Signup' ) ) {
 							$login_url = wp_login_url();
 							$blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
 							$message = "Welcome! Your login details are as follows:" . "\r\n";
-							$message .= sprintf(__('Username: %s'), $fb_email) . "\r\n";
-							$message .= sprintf(__('Password: %s'), $generate_password) . "\r\n";
+							$message .= sprintf(__('Username: %s', 'user-registration-using-contact-form-7'), $fb_email) . "\r\n";
+							$message .= sprintf(__('Password: %s', 'user-registration-using-contact-form-7'), $generate_password) . "\r\n";
 							$message .= $login_url . "\r\n";
-							wp_mail($fb_email, sprintf(__('[%s] Your username and password'), $blogname), $message);
+							wp_mail($fb_email, sprintf(__('[%s] Your username and password', 'user-registration-using-contact-form-7'), $blogname), $message);
 							
 						}
 					}
