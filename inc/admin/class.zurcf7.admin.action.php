@@ -60,7 +60,9 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 			}
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Display check, not form processing
 			$post_type = isset( $_GET['post_type'] ) ? sanitize_text_field( wp_unslash( $_GET['post_type'] ) ) : '';
-			if( $post_type && (ZURCF7_POST_TYPE === $post_type) ){
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Display check, not form processing
+			$page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
+			if( ( $post_type && (ZURCF7_POST_TYPE === $post_type) ) || ( $page && 'zurcf7_settings' === $page ) ){
 				wp_register_script( ZURCF7_PREFIX . '-admin-js', ZURCF7_URL . 'assets/js/admin.min.js', array( 'jquery-core' ), ZURCF7_VERSION, false );
 				wp_register_style( ZURCF7_PREFIX . '-admin-css', ZURCF7_URL . 'assets/css/admin.min.css', array(), ZURCF7_VERSION );
 
@@ -77,7 +79,7 @@ if ( !class_exists( 'ZURCF7_Admin_Action' ) ) {
 					'zurcf7_acf_field_mapping' => __( '<h3>ACF Plugin Required</h3><p>ACF Plugin is required for ACF Field Mapping</p>', 'user-registration-using-contact-form-7' ),
 					'zurcf7_fb_signup_app_id_tool' => __( '<h3>App Id</h3><p>Please enter app id.</p>', 'user-registration-using-contact-form-7' ),
 					'zurcf7_fb_app_secret_tool' => __( '<h3>App Secret</h3><p>Please enter app secret.</p>', 'user-registration-using-contact-form-7' ),
-					
+					'ajax_nonce' => wp_create_nonce( 'zurcf7_get_cf7_form_data' ),
 				);
 
 				

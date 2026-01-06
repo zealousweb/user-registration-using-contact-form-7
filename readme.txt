@@ -5,10 +5,10 @@ Donate Link: http://www.zealousweb.com/payment/
 Tags: user registration, user login, forgot password, contact form 7
 Requires at least: 3.5
 Tested up to:  6.9
-Stable tag: 2.5
+Stable tag: 2.6
 Requires PHP: 5.6
 License: GPL-3.0
-Version: 2.5
+Version: 2.6
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 User Registration Using Contact Form 7 plugin provides the feature to register the user to the website.
@@ -107,6 +107,12 @@ Installing the plugin is easy. Just follow these steps:
 
 == Changelog ==
 
+= 2.6 =
+* Security: Fixed unauthorized access vulnerability in fn_get_cf7_form_data() function.
+* Added capability check (manage_options) to restrict access to administrators only.
+* Added nonce verification for CSRF protection.
+* Removed wp_ajax_nopriv hook to prevent unauthenticated access.
+
 = 2.5 =
 * Security: Addressed potential user registration vulnerability via Contact Form 7.
 * Added input validation, nonce verification, and proper role handling.
@@ -138,6 +144,13 @@ Installing the plugin is easy. Just follow these steps:
 * Initial Release
 
 == Upgrade Notice ==
+
+= 2.6 =
+* Security update: This version fixes a critical security vulnerability. Please update immediately.
+
+= 2.5 =
+* Security: Addressed potential user registration vulnerability via Contact Form 7.
+* Added input validation, nonce verification, and proper role handling.
 
 = 2.4 =
 * ACF Field Condition Updated.

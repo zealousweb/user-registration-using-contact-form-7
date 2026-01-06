@@ -41,7 +41,6 @@ if ( !class_exists( 'ZURCF7' ) ) {
 
 			#get Contact form data in admin
 			add_action("wp_ajax_get_cf7_form_data", array($this,"fn_get_cf7_form_data"));
-			add_action("wp_ajax_nopriv_get_cf7_form_data", array($this,"fn_get_cf7_form_data"));
 
 		}
 
@@ -178,10 +177,22 @@ if ( !class_exists( 'ZURCF7' ) ) {
 		 *
 		 */
 		function fn_get_cf7_form_data(){
-		//Get current saved CF7 ID
+			// Check user capabilities - only allow users with manage_options capability
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_send_json( array( 'response' => 'error', 'formtag' => '<option value="">Unauthorized access</option>' ) );
+				return;
+			}
+
+			// Verify nonce for additional security
+			if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'zurcf7_get_cf7_form_data' ) ) {
+				wp_send_json( array( 'response' => 'error', 'formtag' => '<option value="">Security check failed</option>' ) );
+				return;
+			}
+
+			//Get current saved CF7 ID
 			$zurcf7_formid = (get_option( 'zurcf7_formid')) ? get_option( 'zurcf7_formid') : "";
 
-			$html .= '<option value="">Select field</option>';
+			$html = '<option value="">Select field</option>';
 			if(!empty(sanitize_text_field($_POST['zurcf7_formid']))){  //phpcs:ignore
 
 				//get tag for specific tag

@@ -6,7 +6,7 @@
             type: "POST",
             dataType: "json",
             url: ajaxurl,
-            data: { action: "get_cf7_form_data", zurcf7_formid: zurcf7_formid },
+            data: { action: "get_cf7_form_data", zurcf7_formid: zurcf7_formid, nonce: cf7forms_data.ajax_nonce },
             beforeSend: function() {
                 $('.loader').show();
             },
