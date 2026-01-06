@@ -108,10 +108,8 @@ Installing the plugin is easy. Just follow these steps:
 == Changelog ==
 
 = 2.6 =
-* Security: Fixed unauthorized access vulnerability in fn_get_cf7_form_data() function.
-* Added capability check (manage_options) to restrict access to administrators only.
-* Added nonce verification for CSRF protection.
-* Removed wp_ajax_nopriv hook to prevent unauthenticated access.
+* Security: Fixed unauthorized access vulnerability 
+* Added nonce verification.
 
 = 2.5 =
 * Security: Addressed potential user registration vulnerability via Contact Form 7.
@@ -146,7 +144,8 @@ Installing the plugin is easy. Just follow these steps:
 == Upgrade Notice ==
 
 = 2.6 =
-* Security update: This version fixes a critical security vulnerability. Please update immediately.
+* Security: Fixed unauthorized access vulnerability 
+* Added nonce verification.
 
 = 2.5 =
 * Security: Addressed potential user registration vulnerability via Contact Form 7.
