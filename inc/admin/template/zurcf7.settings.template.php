@@ -13,7 +13,14 @@ wp_enqueue_style( 'wp-pointer' );
 
 ?>
 <div class="wrap">
-  <h1><?php echo esc_html__( 'User Registration CF7 Settings', 'user-registration-using-contact-form-7' );?></h1>
+  <div class="zurcf7-help-card">
+		<h1><?php echo esc_html__( 'User Registration CF7 Settings', 'user-registration-using-contact-form-7' );?></h1>
+		<div class="zurcf7-help-card-footer">
+			<a class="zurcf7-primary-btn" href="https://support.zealousweb.com/portal/en/home" target="_blank" rel="noopener noreferrer">
+				<?php esc_html_e( 'Open Support Ticket', 'user-registration-using-contact-form-' ); ?>
+			</a>
+		</div>
+	</div>
   <div class="notice notice-error is-dismissible" id="user-registration-using-contact-form-7" style="display:none;">
     <p><?php echo esc_html__( 'Please fill all mandatory fields.', 'user-registration-using-contact-form-7' ); ?></p>
       <button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php echo esc_html__( 'Please fill all mandatory fields..', 'user-registration-using-contact-form-7' ); ?></span></button>
