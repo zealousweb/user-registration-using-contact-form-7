@@ -4,11 +4,11 @@ Contributors: zealopensource
 Donate Link: http://www.zealousweb.com/payment/
 Tags: user registration, user login, forgot password, contact form 7
 Requires at least: 3.5
-Tested up to:  6.9
-Stable tag: 2.6
+Tested up to:  7.0
+Stable tag: 2.7
 Requires PHP: 5.6
 License: GPL-3.0
-Version: 2.6
+Version: 2.7
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 User Registration Using Contact Form 7 plugin provides the feature to register the user to the website.
@@ -107,6 +107,9 @@ Installing the plugin is easy. Just follow these steps:
 
 == Changelog ==
 
+= 2.7 =
+* Added a new “Open Support Ticket” button to provide quick and direct access to support.
+
 = 2.6 =
 * Security: Fixed unauthorized access vulnerability 
 * Added nonce verification.
@@ -142,6 +145,9 @@ Installing the plugin is easy. Just follow these steps:
 * Initial Release
 
 == Upgrade Notice ==
+
+= 2.7 =
+* Added a new “Open Support Ticket” button to provide quick and direct access to support.
 
 = 2.6 =
 * Security: Fixed unauthorized access vulnerability 
